@@ -8,3 +8,4 @@ Description here
 <b> Features </b>
 - Feature A
 - Feature B
+- Test for Password Prompt
