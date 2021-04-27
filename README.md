@@ -1,10 +1,6 @@
 
 
-## PROJECT NAME HERE
-### MOBDEVE S11 - J&J Express
+## J&J Museum
+### MOBDEVE S11 - J&J
 ----
-Description here
-<br><br>
-<b> Features </b>
-- Feature A
-- Feature B
+Running at least API 23
