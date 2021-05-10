@@ -3,7 +3,6 @@ package ph.edu.dlsu.s12.jandj.jjmuseum;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -13,7 +12,7 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-public class SectionActivity extends AppCompatActivity implements PieceListAdapter.ItemClickListener {
+public class SearchActivity extends AppCompatActivity implements PieceListAdapter.ItemClickListener {
 
     private Button back_button;
     private RecyclerView vertical_recyclerview;
@@ -24,7 +23,7 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_section);
+        setContentView(R.layout.activity_search);
 
         init();
 
