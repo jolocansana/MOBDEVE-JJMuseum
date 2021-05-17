@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements SectionListAdapter.ItemClickListener {
 
-    private Button search_button;
+    private Button search_button, qr_button;
     private RecyclerView horizontalScrollView;
 
     private SectionListAdapter sectionListAdapter;
@@ -39,11 +39,21 @@ public class MainActivity extends AppCompatActivity implements SectionListAdapte
                 startActivity(searchActivity);
             }
         });
+
+        qr_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent QRActivity = new Intent(getApplicationContext(), QRActivity.class);
+                startActivity(QRActivity);
+            }
+        });
     }
 
     private void init() {
         horizontalScrollView = (RecyclerView) findViewById(R.id.horizontal_scrollview);
         search_button = (Button) findViewById(R.id.search_button);
+        qr_button = (Button) findViewById(R.id.qr_button);
+
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(horizontalScrollView.getContext(), DividerItemDecoration.HORIZONTAL);
         dividerItemDecoration.setDrawable(getDrawable(R.drawable.horizontal_spacing));
