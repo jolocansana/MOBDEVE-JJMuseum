@@ -1,4 +1,4 @@
-package ph.edu.dlsu.s12.jandj.jjmuseum;
+package ph.edu.dlsu.s12.jandj.jjmuseum.controllers;
 
 public class Pebble {
     private String background_image, text_caption;

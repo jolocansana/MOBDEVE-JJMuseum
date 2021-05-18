@@ -1,0 +1,171 @@
+[
+  {
+    "ID": "fa01",
+    "Name": "Retablo",
+    "Collection": "Fine Art",
+    "CollectionID": "FA",
+    "Time": "18th Century",
+    "Description": "It is an upright panel, intricately carved and highly decorated. Its wooden frame contains ledges and panels behind and above the altar. The main feature of old Roman Catholic churches in the country is the retablo, the altarpiece.",
+    "Asset": [
+      "fa01_1",
+      "fa01_2",
+      "fa01_3"
+    ]
+  },
+  {
+    "ID": "fa02",
+    "Name": "Mother’s Revenge",
+    "Collection": "Fine Art",
+    "CollectionID": "FA",
+    "Time": "19th Century",
+    "Description": "The sculpture in terra cotta (clay), Mother’s Revenge, is an allegorical representation of what was happening in the Philippines during that period. Shown is a mother dog trying to rescue her helpless pup from the bite of the crocodile. The mother dog represents “mother Philippines” and the patriots who are doing their best to save the defenseless countrymen - the pup - from the cruelty of the Spaniards as represented by the crocodile.",
+    "Asset": [
+      "fa02_1",
+      "fa02_2",
+      "fa02_3"
+    ]
+  },
+  {
+    "ID": "fa03",
+    "Name": "First Mass at Limasawa",
+    "Collection": "Fine Art",
+    "CollectionID": "FA",
+    "Time": "1960s",
+    "Description": "The mural depicts Fr. Pedro Valderrama officiating the mass in an improvised altar in the presence of Ferdinand Magellan, Pigafetta (chronicler of Magellan), Spanish soldiers, and the natives in awe.",
+    "Asset": [
+      "fa03_1",
+      "fa03_2",
+      ""
+    ]
+  },
+  {
+    "ID": "fa04",
+    "Name": "Harana in Manila",
+    "Collection": "Fine Art",
+    "CollectionID": "FA",
+    "Time": "1950s",
+    "Description": "The Harana in Manila shows seven geometrical figures playing musical instru-ments and serenading the audience amidst fireworks (Fiesta time). The semi-concave glass medium is made by one of the leading glass manufacturers in the United States, the Steuben.",
+    "Asset": [
+      "fa04_1",
+      "fa04_2",
+      ""
+    ]
+  },
+  {
+    "ID": "ar01",
+    "Name": "Skull-cap",
+    "Collection": "Archaeology",
+    "CollectionID": "AR",
+    "Time": "14500 BC",
+    "Description": "One of the earliest human remains in the archipelago is a fossilized skull-cap (frontal bone) that belongs to a female estimated to be 22,000 years old. It was discovered together with a right mandible (jaw) and teeth in Tabon Cave, Palawan by Robert Fox of The National Museum.",
+    "Asset": [
+      "ar01_1",
+      "ar01_2",
+      ""
+    ]
+  },
+  {
+    "ID": "ar02",
+    "Name": "Lingling-o",
+    "Collection": "Archaeology",
+    "CollectionID": "AR",
+    "Time": "Metal Age",
+    "Description": "Lingling-o, a kind of ear pendant fashioned from green nephrite (jade) is the characteristic trait of the Early Metal Age. Its basic form is a ring with a slit in one side to fit the pierced earlobe. The simplest is plain but some are decorated with three studs in the form of buds. Sometimes these studs are elongated into long spines or projections.",
+    "Asset": [
+      "ar02_1",
+      "ar02_2",
+      ""
+    ]
+  },
+  {
+    "ID": "ar03",
+    "Name": "Butuan Ivory Seal",
+    "Collection": "Archaeology",
+    "CollectionID": "AR",
+    "Time": "1002 AD",
+    "Description": "An ivory stamp seal associated with a shell midden dated 9th-12th century was found in Libertad, Butuan City in Agusan del Norte (southern Philippines). Inscribed on the seal is the word Butban in stylized Kavi. The script has a similarity to the Tagalog script. Butban, was presumed to stand for Butwan or Butuan since the letters “b” and “w” were frequently interchanged.",
+    "Asset": [
+      "ar03_1",
+      "ar03_2",
+      "ar03_3"
+    ]
+  },
+  {
+    "ID": "et01",
+    "Name": "Tagakaolo Upper Garment",
+    "Collection": "Ethnography",
+    "CollectionID": "ET",
+    "Time": "20th Century",
+    "Description": "Tagakaolo upper garment made of abaca (Musa textilis) cloth decorated with mother-of-pearl platelets. This is worn among the Tagakaolo men for special occasion",
+    "Asset": [
+      "et01_1",
+      "et01_2",
+      ""
+    ]
+  },
+  {
+    "ID": "et02",
+    "Name": "Mandaya Winged Dagger",
+    "Collection": "Ethnography",
+    "CollectionID": "ET",
+    "Time": "17th Century",
+    "Description": "The badao or winged dagger is a double bladed multi-purpose weapon used by the Mandaya of Eastern Mindanao. The dagger is a status symbol used among the Mandaya datu. It has a crown-like wooden pommel enclosed with a carved wooden sheath provided with red cloth. The red cloth symbolizes bravery among the Mandaya and it is usually seen among Mandaya hunters.",
+    "Asset": [
+      "et02_1",
+      "et02_2",
+      ""
+    ]
+  },
+  {
+    "ID": "et03",
+    "Name": "Lepa Boat",
+    "Collection": "Ethnography",
+    "CollectionID": "ET",
+    "Time": "19th Century",
+    "Description": "The lepa boat is a houseboat of the Sama D’Laut better known as the Badjau. They are the sea faring or “sea gypsies people” located in Sitangkai, Tawi-tawi and Bongao. They use their houseboat to travel from one place to another and fish along the way for their subsistence The houseboat is one of the most beautiful of traditional boats possessing an ancient type of architecture that has a uniquely designed sail. It is made of hardwood most probably the yakal tree with carvings (okil) directly on the boat, projecting hulls and prow.",
+    "Asset": [
+      "et03_1",
+      "et03_2",
+      "et03_3"
+    ]
+  },
+  {
+    "ID": "nh01",
+    "Name": "Tragulus napu",
+    "Collection": "Natural History",
+    "CollectionID": "NH",
+    "Time": "1822",
+    "Description": "The mouse-deer stands less than a foot at the shoulder making it the smallest Asiatic hoofed animal. Although resembling a deer, it is more related to the pigs and camels. The character of the four well-developed toes relates it to the pigs, while the skull and teeth characteristics are reminiscent of the camels. Males grow long re-curved canines on upper jaw and no front teeth. It has no horns.",
+    "Asset": [
+      "nh01_1",
+      "nh01_2",
+      "nh01_3"
+    ]
+  },
+  {
+    "ID": "nh02",
+    "Name": "Papilio chikae Igarashi",
+    "Collection": "Natural History",
+    "CollectionID": "NH",
+    "Time": "1965",
+    "Description": "Papilio chikae Igarashi, 1965 or more commonly known as the Luzon peacock swallowtail is an endemic species of butterfly from the Family Papilionidae. The species has two subspecies, the Luzon morph is P. chikae chikae and another one P. c. hermeli (Nuyda, 1992) is found in Mindoro. Both species look exactly alike and have very little distinction separating them.",
+    "Asset": [
+      "nh02_1",
+      "nh02_2",
+      "nh02_3"
+    ]
+  },
+  {
+    "ID": "nh03",
+    "Name": "Tarsius syrichta",
+    "Collection": "Natural History",
+    "CollectionID": "NH",
+    "Time": "1758",
+    "Description": "The Philippine tarsier, commonly mistaken as a small monkey is very much different from a monkey. A tarsier is a small nocturnal primate with huge goggle eyes that are fixed forward into a staring look. The eyes cannot moved from corner to corner so the tarsier has to turn its head to as far as 180 degrees to see an object at its side. The eyes are adapted to nocturnal habits, such that at night, its pupil expands almost covering the entire iris. However, during the day or whenever exposed to bright light, the pupil contracts into a small fine slit.",
+    "Asset": [
+      "nh03_1",
+      "nh03_2",
+      "nh03_3"
+    ]
+  }
+]

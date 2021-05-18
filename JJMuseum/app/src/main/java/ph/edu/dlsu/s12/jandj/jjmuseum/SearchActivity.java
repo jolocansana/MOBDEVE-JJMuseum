@@ -12,6 +12,8 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
+import ph.edu.dlsu.s12.jandj.jjmuseum.controllers.Pebble;
+
 public class SearchActivity extends AppCompatActivity implements PieceListAdapter.ItemClickListener {
 
     private Button back_button;

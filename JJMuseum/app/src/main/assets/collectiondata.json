@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "FA",
+    "Collection": "Fine Art",
+    "Description": "The Fine Art Collection contains the artistic patrimony of the nation and the legacy to the coming generations. This includes paintings, sculptures, icons, sketches, and mixed media from the 18th century to the late 21st century.",
+    "Header": "fa_header"
+  },
+  {
+    "ID": "AR",
+    "Collection": "Archaeology",
+    "Description": "The Archaeological Collection houses pre-historic artifacts of the Philippines from 450,000 BC to the Age of Contact with the Great Traditions of Asia.",
+    "Header": "ar_header"
+  },
+  {
+    "ID": "ET",
+    "Collection": "Ethnography",
+    "Description": "The Anthropology section features different ethnographic artifacts from ancient tribes of the Philippines. You will find wooden tools and objects to personal ornaments and adornments our ancestors used.",
+    "Header": "et_header"
+  },
+  {
+    "ID": "NH",
+    "Collection": "Natural History: Zoological",
+    "Description": "The Zoology collection aims to showcase an exceptional array of land and water animals whom are well-known to severly threatened and nearly extinct.",
+    "Header": "nh_header"
+  }
+]
