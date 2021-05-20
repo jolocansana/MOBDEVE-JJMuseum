@@ -7,14 +7,32 @@
     android:layout_margin="20dp"
     android:weightSum="20">
 
-    <ImageView
-        android:id="@+id/itemIv"
-        android:layout_width="200dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6"
-        android:layout_gravity="center"
-        tools:srcCompat="@tools:sample/avatars"
-        android:background="@drawable/style_custom_border"/>
+        android:layout_weight="6">
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="B"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="10dp"
+            android:textSize="18dp"
+            />
+
+        <ImageView
+            android:id="@+id/itemIv"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            tools:srcCompat="@tools:sample/avatars"
+            android:background="@drawable/style_custom_border"/>
+    </LinearLayout>
+
+
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,6 +43,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/item1Iv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -33,6 +52,7 @@
             android:background="@drawable/style_custom_border"/>
 
         <ImageView
+            android:id="@+id/item2Iv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -41,6 +61,7 @@
             android:background="@drawable/style_custom_border"/>
 
         <ImageView
+            android:id="@+id/item3Iv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -67,19 +88,19 @@
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/item_time_originTv"
+            android:id="@+id/item_collectionTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Time Origin"
+            android:text="Collection"
             android:textSize="15dp"
             android:layout_marginTop="10dp" />
 
         <TextView
-            android:id="@+id/item_place_originTv"
+            android:id="@+id/item_time_originTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Place Origin"
-            android:textSize="15dp" />
+            android:text="Time Origin"
+            android:textSize="15dp"/>
 
         <TextView
             android:id="@+id/item_descriptionTv"
@@ -99,7 +120,8 @@
         android:text="COMMENTS"
         android:textStyle="bold"
         android:textSize="20dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"

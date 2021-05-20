@@ -98,6 +98,15 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
     @Override
     public void onItemClick(View view, int position) {
         Intent PieceActivity = new Intent(getApplicationContext(), PieceActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("ID", pieceArrayList.get(position).getID());
+        bundle.putString("Name", pieceArrayList.get(position).getName());
+        bundle.putString("Collection", pieceArrayList.get(position).getCollection());
+        bundle.putString("CollectionID", pieceArrayList.get(position).getCollectionID());
+        bundle.putString("Time", pieceArrayList.get(position).getTime());
+        bundle.putString("Description", pieceArrayList.get(position).getDescription());
+        bundle.putString("Asset", pieceArrayList.get(position).getAsset(position));
+        PieceActivity.putExtras(bundle);
         startActivity(PieceActivity);
     }
 }
