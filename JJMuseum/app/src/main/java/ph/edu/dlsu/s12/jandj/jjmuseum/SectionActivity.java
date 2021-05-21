@@ -89,6 +89,7 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
 
         filteredArrayList = new ArrayList<>();
         piecePebbleArrayList = new ArrayList<>();
+        filteredArrayList = new ArrayList<>();
 
         for(Piece piece : pieceArrayList) {
             if(piece.getCollectionID().equals(bundle.get("ID"))) {
@@ -103,6 +104,15 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
     @Override
     public void onItemClick(View view, int position) {
         Intent PieceActivity = new Intent(getApplicationContext(), PieceActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("ID", filteredArrayList.get(position).getID());
+        bundle.putString("Name", filteredArrayList.get(position).getName());
+        bundle.putString("Collection", filteredArrayList.get(position).getCollection());
+        bundle.putString("CollectionID", filteredArrayList.get(position).getCollectionID());
+        bundle.putString("Time", filteredArrayList.get(position).getTime());
+        bundle.putString("Description", filteredArrayList.get(position).getDescription());
+        bundle.putStringArrayList("Assets",filteredArrayList.get(position).getAssets());
+        PieceActivity.putExtras(bundle);
         startActivity(PieceActivity);
     }
 }
