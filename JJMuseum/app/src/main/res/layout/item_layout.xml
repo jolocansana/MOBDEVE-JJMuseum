@@ -31,8 +31,6 @@
             tools:srcCompat="@tools:sample/avatars"
             android:background="@drawable/style_custom_border"/>
     </LinearLayout>
-
-
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,11 +68,10 @@
             android:background="@drawable/style_custom_border"/>
     </LinearLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4.5"
+        android:layout_weight="6"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:orientation="vertical">
@@ -102,9 +99,10 @@
             android:text="Time Origin"
             android:textSize="15dp"/>
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
 
             <TextView
                 android:id="@+id/item_descriptionTv"
@@ -113,11 +111,9 @@
                 android:text="Item Description"
                 android:justificationMode="inter_word"
                 android:textSize="15dp"
-                android:padding="5dp"
-                android:paddingBottom="10dp"
-                android:layout_marginTop="10dp"/>
+                android:paddingBottom="20dp" />
 
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
 
@@ -146,7 +142,6 @@
             android:background="@drawable/style_comment"
             android:hint="Enter Comment"/>
 
-        <!--can be changed to an image-->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_comment"
             android:layout_width="wrap_content"
@@ -158,10 +153,10 @@
 
     </LinearLayout>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_weight="2.5"
         android:layout_marginTop="15dp">
 
         <ListView
@@ -174,6 +169,6 @@
             <include layout="@layout/comment_layout"/>
             <include layout="@layout/comment_layout"/>-->
         </ListView>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>
