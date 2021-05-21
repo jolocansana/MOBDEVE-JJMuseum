@@ -21,7 +21,7 @@ import com.google.zxing.Result;
 public class QRActivity extends AppCompatActivity {
 
     private CodeScanner qrScanner;
-    private boolean testing;
+    private String recentScannedString;
     private final int CAMERA_REQUEST_CODE = 101;
 
     @Override
@@ -35,7 +35,7 @@ public class QRActivity extends AppCompatActivity {
 
     private void codeScanner() {
 
-        testing = true;
+        recentScannedString = "";
 
         qrScanner = new CodeScanner(this, findViewById(R.id.scanner_view));
 
@@ -52,9 +52,9 @@ public class QRActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(testing) {
+                        if(!recentScannedString.equals(result.getText())) {
                             Toast.makeText(QRActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
-                            testing = false;
+                            recentScannedString = result.getText();
                         }
                     }
                 });

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -23,7 +24,7 @@ import ph.edu.dlsu.s12.jandj.jjmuseum.utils.jsonParser;
 
 public class MainActivity extends AppCompatActivity implements SectionListAdapter.ItemClickListener {
 
-    private Button search_button, qr_button;
+    private ImageView search_button, qr_button;
     private RecyclerView horizontalScrollView;
     private CardView cv_map_button;
 
@@ -70,8 +71,8 @@ public class MainActivity extends AppCompatActivity implements SectionListAdapte
 
     private void init() {
         horizontalScrollView = (RecyclerView) findViewById(R.id.horizontal_scrollview);
-        search_button = (Button) findViewById(R.id.search_button);
-        qr_button = (Button) findViewById(R.id.qr_button);
+        search_button = (ImageView) findViewById(R.id.search_button);
+        qr_button = (ImageView) findViewById(R.id.qr_button);
         cv_map_button = (CardView) findViewById(R.id.cv_map_button);
 
 

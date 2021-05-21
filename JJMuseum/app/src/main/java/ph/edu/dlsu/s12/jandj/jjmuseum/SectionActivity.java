@@ -25,7 +25,7 @@ import ph.edu.dlsu.s12.jandj.jjmuseum.utils.jsonParser;
 
 public class SectionActivity extends AppCompatActivity implements PieceListAdapter.ItemClickListener {
 
-    private Button back_button;
+    private ImageView back_button;
     private RecyclerView vertical_recyclerview;
     private TextView section_name, section_description;
     private ImageView section_header_photo;
@@ -33,6 +33,7 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
     private ArrayList<Pebble> piecePebbleArrayList;
     private PieceListAdapter pieceListAdapter;
     private ArrayList<Piece> pieceArrayList;
+    private ArrayList<Piece> filteredArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +64,7 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
     }
 
     private void init() {
-        back_button = (Button) findViewById(R.id.back_button);
+        back_button = (ImageView) findViewById(R.id.back_button);
 
         vertical_recyclerview = (RecyclerView) findViewById(R.id.vertical_recyclerview);
 
@@ -86,10 +87,14 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
 
         Log.d("FIRST IN ARRAY", pieceArrayList.get(0).getCollection());
 
+        filteredArrayList = new ArrayList<>();
         piecePebbleArrayList = new ArrayList<>();
 
         for(Piece piece : pieceArrayList) {
-            if(piece.getCollectionID().equals(bundle.get("ID"))) piecePebbleArrayList.add(new Pebble(piece.getAsset(0), piece.getName()));
+            if(piece.getCollectionID().equals(bundle.get("ID"))) {
+                filteredArrayList.add(piece);
+                piecePebbleArrayList.add(new Pebble(piece.getAsset(0), piece.getName()));
+            }
         }
 
         Log.d("HEADER FILE", piecePebbleArrayList.get(0).getBackground_image());

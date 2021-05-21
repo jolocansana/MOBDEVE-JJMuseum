@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ import ph.edu.dlsu.s12.jandj.jjmuseum.controllers.Pebble;
 
 public class SearchActivity extends AppCompatActivity implements PieceListAdapter.ItemClickListener {
 
-    private Button back_button;
+    private ImageView back_button;
     private RecyclerView vertical_recyclerview;
 
     private ArrayList<Pebble> pieceArrayList;
@@ -51,7 +52,7 @@ public class SearchActivity extends AppCompatActivity implements PieceListAdapte
     }
 
     private void init() {
-        back_button = (Button) findViewById(R.id.back_button);
+        back_button = (ImageView) findViewById(R.id.back_button);
 
         vertical_recyclerview = (RecyclerView) findViewById(R.id.vertical_recyclerview);
 

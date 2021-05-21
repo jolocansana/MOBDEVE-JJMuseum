@@ -21,14 +21,14 @@
             android:scaleType="centerCrop"
             android:src="@drawable/sample_piece" />
 
-        <Button
+        <ImageView
             android:id="@+id/back_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:text="B"
+            android:src="@drawable/back_icon"
             android:layout_margin="20dp"
-            android:textSize="18dp"
             />
+
     </RelativeLayout>
 
     <TextView
@@ -45,9 +45,10 @@
         android:id="@+id/scrollview"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="0dp"
         android:layout_marginHorizontal="20dp"
         app:layout_constraintTop_toBottomOf="@+id/section_name"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="30dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
