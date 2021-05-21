@@ -67,4 +67,6 @@ public class Piece {
     public String getAsset(int index) {
         return Asset.get(index);
     }
+
+    public ArrayList<String> getAssets(){ return Asset;}
 }

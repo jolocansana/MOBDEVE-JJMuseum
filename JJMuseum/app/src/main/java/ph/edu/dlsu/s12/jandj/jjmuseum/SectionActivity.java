@@ -33,6 +33,7 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
     private ArrayList<Pebble> piecePebbleArrayList;
     private PieceListAdapter pieceListAdapter;
     private ArrayList<Piece> pieceArrayList;
+    private ArrayList<Piece> filteredArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,9 +88,13 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
         Log.d("FIRST IN ARRAY", pieceArrayList.get(0).getCollection());
 
         piecePebbleArrayList = new ArrayList<>();
+        filteredArrayList = new ArrayList<>();
 
         for(Piece piece : pieceArrayList) {
-            if(piece.getCollectionID().equals(bundle.get("ID"))) piecePebbleArrayList.add(new Pebble(piece.getAsset(0), piece.getName()));
+            if(piece.getCollectionID().equals(bundle.get("ID"))) {
+                filteredArrayList.add(piece);
+                piecePebbleArrayList.add(new Pebble(piece.getAsset(0), piece.getName()));
+            }
         }
 
         Log.d("HEADER FILE", piecePebbleArrayList.get(0).getBackground_image());
@@ -99,13 +104,13 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
     public void onItemClick(View view, int position) {
         Intent PieceActivity = new Intent(getApplicationContext(), PieceActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("ID", pieceArrayList.get(position).getID());
-        bundle.putString("Name", pieceArrayList.get(position).getName());
-        bundle.putString("Collection", pieceArrayList.get(position).getCollection());
-        bundle.putString("CollectionID", pieceArrayList.get(position).getCollectionID());
-        bundle.putString("Time", pieceArrayList.get(position).getTime());
-        bundle.putString("Description", pieceArrayList.get(position).getDescription());
-        bundle.putString("Asset", pieceArrayList.get(position).getAsset(position));
+        bundle.putString("ID", filteredArrayList.get(position).getID());
+        bundle.putString("Name", filteredArrayList.get(position).getName());
+        bundle.putString("Collection", filteredArrayList.get(position).getCollection());
+        bundle.putString("CollectionID", filteredArrayList.get(position).getCollectionID());
+        bundle.putString("Time", filteredArrayList.get(position).getTime());
+        bundle.putString("Description", filteredArrayList.get(position).getDescription());
+        bundle.putStringArrayList("Assets",filteredArrayList.get(position).getAssets());
         PieceActivity.putExtras(bundle);
         startActivity(PieceActivity);
     }

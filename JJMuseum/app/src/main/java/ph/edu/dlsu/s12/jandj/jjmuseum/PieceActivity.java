@@ -3,11 +3,15 @@ package ph.edu.dlsu.s12.jandj.jjmuseum;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class PieceActivity extends AppCompatActivity {
 
@@ -15,7 +19,7 @@ public class PieceActivity extends AppCompatActivity {
     private ImageView itemIv, item1Iv, item2Iv, item3Iv;
     private TextView item_nameTv, item_collectionTv, item_time_originTv, item_descriptionTv;
     private EditText commentEt;
-
+    private ArrayList<String> assetsArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,27 @@ public class PieceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        item1Iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(0),null, getPackageName())));
+            }
+        });
+
+        item2Iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(1),null, getPackageName())));
+            }
+        });
+
+        item3Iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(2),null, getPackageName())));
             }
         });
     }
@@ -53,6 +78,18 @@ public class PieceActivity extends AppCompatActivity {
         item_collectionTv.setText(bundle.getString("Collection"));
         item_time_originTv.setText(bundle.getString("Time"));
         item_descriptionTv.setText(bundle.getString("Description"));
+        assetsArrayList = bundle.getStringArrayList("Assets");
+
+        Log.d( "List Size", "Size is " + assetsArrayList.size());
+        itemIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(0),null, getPackageName())));
+        item1Iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(0),null, getPackageName())));
+        item2Iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(1),null, getPackageName())));
+        if ((assetsArrayList.get(2)).equals("")){
+            item3Iv.setVisibility(View.GONE);
+        }
+        else{
+            item3Iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(2),null, getPackageName())));
+        }
 
     }
 }
