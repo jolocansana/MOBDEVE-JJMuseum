@@ -11,13 +11,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class PieceActivity extends AppCompatActivity {
 
-    private Button back_button, btn_comment;
+    private ImageView back_button;
+    private Button btn_comment;
     private ImageView itemIv, item1Iv, item2Iv, item3Iv;
-    private TextView item_nameTv, item_collectionTv, item_time_originTv, item_descriptionTv;
+    private TextView header_title, item_nameTv, item_collectionTv, item_time_originTv, item_descriptionTv;
     private EditText commentEt;
     private ArrayList<String> assetsArrayList;
 
@@ -58,7 +61,7 @@ public class PieceActivity extends AppCompatActivity {
     }
 
     private void init(){
-        back_button = (Button) findViewById(R.id.back_button);
+        back_button = (ImageView) findViewById(R.id.back_button);
         btn_comment = (Button) findViewById(R.id.btn_comment);
 
         itemIv = (ImageView) findViewById(R.id.itemIv);
@@ -66,6 +69,7 @@ public class PieceActivity extends AppCompatActivity {
         item2Iv = (ImageView) findViewById(R.id.item2Iv);
         item3Iv = (ImageView) findViewById(R.id.item3Iv);
 
+        header_title = (TextView) findViewById(R.id.header_title);
         item_nameTv = (TextView)findViewById(R.id.item_nameTv);
         item_collectionTv = (TextView)findViewById(R.id.item_collectionTv);
         item_time_originTv = (TextView)findViewById(R.id.item_time_originTv);
@@ -74,6 +78,8 @@ public class PieceActivity extends AppCompatActivity {
         commentEt = (EditText)findViewById(R.id.commentEt);
 
         Bundle bundle = getIntent().getExtras();
+
+        header_title.setText(bundle.getString("Name"));
         item_nameTv.setText(bundle.getString("Name"));
         item_collectionTv.setText(bundle.getString("Collection"));
         item_time_originTv.setText(bundle.getString("Time"));

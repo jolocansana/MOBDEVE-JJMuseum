@@ -7,10 +7,44 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+   <LinearLayout
+       android:id="@+id/header"
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:orientation="horizontal"
+       app:layout_constraintTop_toTopOf="parent"
+       android:weightSum="8">
+
+
+      <ImageView
+          android:id="@+id/back_button"
+          android:layout_width="20dp"
+          android:layout_height="30dp"
+          app:layout_constraintTop_toTopOf="parent"
+          android:src="@drawable/back_icon"
+          android:layout_marginRight="10dp"
+          android:layout_weight="1"
+          android:layout_gravity="center_vertical"/>
+
+      <TextView
+          android:id="@+id/header_title"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="7"
+          android:textStyle="bold"
+          android:gravity="center_vertical"
+          android:text="Item Name"
+          android:textSize="20dp"/>
+
+
+   </LinearLayout>
+
    <ScrollView
        android:layout_width="match_parent"
-       android:layout_height="match_parent">
-
+       android:layout_height="wrap_content"
+       android:paddingVertical="40dp"
+       app:layout_constraintTop_toBottomOf="@+id/header"
+       app:layout_constraintBottom_toBottomOf="parent">
       <include layout="@layout/item_layout"/>
    </ScrollView>
 

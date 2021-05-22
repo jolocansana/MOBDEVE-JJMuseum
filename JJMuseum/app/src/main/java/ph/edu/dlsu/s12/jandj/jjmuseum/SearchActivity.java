@@ -94,6 +94,9 @@ public class SearchActivity extends AppCompatActivity implements PieceListAdapte
 
     private void search(String searchInput) {
 
+        searchArrayList.removeAll(searchArrayList);
+        piecePebbleArrayList.removeAll(piecePebbleArrayList);
+
         for (Piece piece : pieceArrayList) {
             if(     piece.getName().toLowerCase().contains(searchInput.toLowerCase()) ||
                     piece.getDescription().toLowerCase().contains(searchInput.toLowerCase()) ||
