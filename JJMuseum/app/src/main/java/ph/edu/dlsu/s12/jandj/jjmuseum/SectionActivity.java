@@ -87,7 +87,6 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
 
         Log.d("FIRST IN ARRAY", pieceArrayList.get(0).getCollection());
 
-        filteredArrayList = new ArrayList<>();
         piecePebbleArrayList = new ArrayList<>();
         filteredArrayList = new ArrayList<>();
 

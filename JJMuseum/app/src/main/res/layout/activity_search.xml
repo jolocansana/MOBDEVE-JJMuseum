@@ -24,6 +24,7 @@
             android:src="@drawable/back_icon"/>
 
         <EditText
+            android:id="@+id/search_field_et"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="3"
