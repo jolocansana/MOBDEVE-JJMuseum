@@ -6,8 +6,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.budiyev.android.codescanner.AutoFocusMode;
@@ -16,7 +18,15 @@ import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
 import com.budiyev.android.codescanner.ErrorCallback;
 import com.budiyev.android.codescanner.ScanMode;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.google.zxing.Result;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+import ph.edu.dlsu.s12.jandj.jjmuseum.model.Piece;
+import ph.edu.dlsu.s12.jandj.jjmuseum.utils.jsonParser;
 
 public class QRActivity extends AppCompatActivity {
 
@@ -24,13 +34,32 @@ public class QRActivity extends AppCompatActivity {
     private String recentScannedString;
     private final int CAMERA_REQUEST_CODE = 101;
 
+    private ArrayList<Piece> pieceArrayList;
+    private boolean isValid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_q_r);
 
+        init();
+
         setupPermissions();
         codeScanner();
+    }
+
+    private void init() {
+
+        isValid = false;
+
+        String piecesJSONString = jsonParser.getJsonFromAssets(getApplicationContext(), "piecesdata.json");
+        Log.d("JSON", piecesJSONString);
+
+        Gson gson = new Gson();
+        Type pieceType = new TypeToken<ArrayList<Piece>>(){}.getType();
+
+        pieceArrayList = new ArrayList<>();
+        pieceArrayList = gson.fromJson(piecesJSONString, pieceType);
     }
 
     private void codeScanner() {
@@ -53,8 +82,25 @@ public class QRActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         if(!recentScannedString.equals(result.getText())) {
-                            Toast.makeText(QRActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
                             recentScannedString = result.getText();
+                            for (Piece piece : pieceArrayList) {
+                                if(piece.getID().equals(recentScannedString)) {
+                                    Intent PieceActivity = new Intent(getApplicationContext(), PieceActivity.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("ID", piece.getID());
+                                    bundle.putString("Name", piece.getName());
+                                    bundle.putString("Collection", piece.getCollection());
+                                    bundle.putString("CollectionID", piece.getCollectionID());
+                                    bundle.putString("Time", piece.getTime());
+                                    bundle.putString("Description", piece.getDescription());
+                                    bundle.putStringArrayList("Assets", piece.getAssets());
+                                    PieceActivity.putExtras(bundle);
+                                    startActivity(PieceActivity);
+                                    finish();
+                                    isValid = true;
+                                }
+                            }
+                            if(!isValid) Toast.makeText(QRActivity.this, "Invalid QR Code", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
