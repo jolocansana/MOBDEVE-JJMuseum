@@ -19,6 +19,12 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/sample_piece" />
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/black"
+                    android:alpha=".3"/>
+
                 <TextView
                     android:id="@+id/text_caption"
                     android:layout_width="wrap_content"
@@ -28,7 +34,7 @@
                     android:textColor="@color/white"
                     android:layout_alignParentBottom="true"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="60dp"
                     android:layout_marginBottom="20dp"
                     android:textSize="18dp"
                     />

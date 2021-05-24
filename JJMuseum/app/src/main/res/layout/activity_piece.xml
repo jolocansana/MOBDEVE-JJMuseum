@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/theme_grey">
 
    <LinearLayout
        android:id="@+id/header"
@@ -14,7 +15,8 @@
        android:orientation="horizontal"
        app:layout_constraintTop_toTopOf="parent"
        android:weightSum="5"
-       android:paddingVertical="10dp">
+       android:paddingVertical="10dp"
+       android:background="@color/theme_orange">
 
 
       <ImageView
@@ -42,8 +44,7 @@
 
    <ScrollView
        android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_marginTop="20dp"
+       android:layout_height="0dp"
        app:layout_constraintTop_toBottomOf="@+id/header"
        app:layout_constraintBottom_toBottomOf="parent">
       <include layout="@layout/item_layout"/>

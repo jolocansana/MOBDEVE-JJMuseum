@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_margin="20dp"
     android:weightSum="20">
 
     <ImageView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:layout_gravity="center"
         android:id="@+id/itemIv"
         android:layout_width="200dp"
         android:layout_height="200dp"
         tools:srcCompat="@tools:sample/avatars"
-        android:background="@drawable/style_custom_border"/>
+        />
     
     <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/itemIv"
+        android:id="@+id/itemWheelLL"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="100dp"
         android:layout_weight="3.5"
         android:weightSum="3"
         android:layout_marginTop="10dp"
@@ -51,92 +57,88 @@
             android:background="@drawable/style_custom_border"/>
     </LinearLayout>
 
-    <LinearLayout
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/itemWheelLL"
+        android:id="@+id/item_nameTv"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="6"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/item_nameTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ITEM NAME"
-            android:textStyle="bold"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/item_collectionTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Collection"
-            android:textSize="15dp"
-            android:layout_marginTop="10dp" />
-
-        <TextView
-            android:id="@+id/item_time_originTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Time Origin"
-            android:textSize="15dp"/>
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:id="@+id/item_descriptionTv"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Item Description"
-                android:justificationMode="inter_word"
-                android:textSize="15dp"
-                android:paddingBottom="20dp" />
-
-        </androidx.core.widget.NestedScrollView>
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:text="ITEM NAME"
+        android:textStyle="bold"
+        android:textSize="20dp" />
 
     <TextView
+        app:layout_constraintTop_toBottomOf="@id/item_nameTv"
+        android:id="@+id/item_collectionTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Collection"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@+id/item_collectionTv"
+        android:id="@+id/item_time_originTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Time Origin"
+        android:textSize="15dp"/>
+
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@+id/item_time_originTv"
+        android:id="@+id/item_descriptionTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Item Description"
+        android:justificationMode="inter_word"
+        android:textSize="15dp"
+        android:paddingBottom="20dp" />
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@+id/item_descriptionTv"
         android:id="@+id/commentTv"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="COMMENTS"
         android:textStyle="bold"
         android:textSize="20dp"
-        android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"/>
 
     <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/commentTv"
+        android:id="@+id/commentLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginLeft="5dp">
+        android:weightSum="4"
+        android:orientation="horizontal"
+        android:layout_marginBottom="30dp">
 
         <EditText
             android:id="@+id/commentEt"
-            android:layout_width="300dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:padding="5dp"
+            android:layout_weight="3"
+            android:layout_marginRight="20dp"
             android:background="@drawable/style_comment"
             android:hint="Enter Comment"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_comment"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Send"
             android:textStyle="bold"
             android:textColor="@color/black"
+            android:layout_weight="1"
             android:background="@drawable/style_custom_button"/>
 
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
+        app:layout_constraintTop_toBottomOf="@id/commentLL"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2.5"
@@ -154,4 +156,4 @@
         </ListView>
     </androidx.core.widget.NestedScrollView>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

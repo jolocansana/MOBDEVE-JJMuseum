@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity">
+    tools:context=".SearchActivity"
+    android:background="@color/theme_grey">
 
     <LinearLayout
         android:id="@+id/search_header"
@@ -12,9 +13,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:paddingHorizontal="20dp"
-        android:paddingTop="10dp"
+        android:paddingVertical="10dp"
         android:orientation="horizontal"
-        android:weightSum="5">
+        android:weightSum="5"
+        android:background="@color/theme_orange">
 
         <ImageView
             android:id="@+id/back_button"
