@@ -3,7 +3,7 @@ package ph.edu.dlsu.s12.jandj.jjmuseum.model;
 import java.util.ArrayList;
 
 public class Piece {
-    private String ID, Name, Collection, CollectionID, Time, Description;
+    private String ID, Name, Collection, CollectionID, Time, Description, Header;
     private ArrayList<String> Asset;
 
     public Piece(String ID, String name, String collection, String collectionID, String time, String description, ArrayList<String> asset) {
@@ -14,6 +14,14 @@ public class Piece {
         Time = time;
         Description = description;
         Asset = asset;
+    }
+
+    public String getHeader() {
+        return Header;
+    }
+
+    public void setHeader(String header) {
+        Header = header;
     }
 
     public String getID() {

@@ -102,7 +102,7 @@ public class SearchActivity extends AppCompatActivity implements PieceListAdapte
                     piece.getDescription().toLowerCase().contains(searchInput.toLowerCase()) ||
                     piece.getCollection().toLowerCase().contains(searchInput.toLowerCase())
                 ) {
-                piecePebbleArrayList.add(new Pebble(piece.getAsset(0), piece.getName()));
+                piecePebbleArrayList.add(new Pebble(piece.getHeader(), piece.getName()));
                 searchArrayList.add(piece);
             }
         }

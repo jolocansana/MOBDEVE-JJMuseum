@@ -93,7 +93,7 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
         for(Piece piece : pieceArrayList) {
             if(piece.getCollectionID().equals(bundle.get("ID"))) {
                 filteredArrayList.add(piece);
-                piecePebbleArrayList.add(new Pebble(piece.getAsset(0), piece.getName()));
+                piecePebbleArrayList.add(new Pebble(piece.getHeader(), piece.getName()));
             }
         }
 
