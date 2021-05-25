@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "666117079803",
+    "firebase_url": "https://jjmuseum-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "jjmuseum",
+    "storage_bucket": "jjmuseum.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666117079803:android:ae8d36b88bd835906d665e",
+        "android_client_info": {
+          "package_name": "ph.edu.dlsu.s12.jandj.jjmuseum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666117079803-aapftpfmc00isk5r3lk9btokbl0dff86.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdr2FNoTWDh4xd6GWiU9HVzyRVRyb9NpQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "666117079803-aapftpfmc00isk5r3lk9btokbl0dff86.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

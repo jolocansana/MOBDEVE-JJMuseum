@@ -8,19 +8,33 @@
     android:layout_margin="20dp"
     android:weightSum="20">
 
-    <ImageView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_gravity="center"
-        android:id="@+id/itemIv"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        tools:srcCompat="@tools:sample/avatars"
-        />
+    <FrameLayout
+        android:id="@+id/main_asset_holder_fl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_gravity="center"
+            android:id="@+id/itemIv"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            tools:srcCompat="@tools:sample/avatars"
+            />
+
+        <VideoView
+            android:layout_gravity="center"
+            android:id="@+id/videoview"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:visibility="gone"/>
+
+    </FrameLayout>
     
     <LinearLayout
-        app:layout_constraintTop_toBottomOf="@id/itemIv"
+        app:layout_constraintTop_toBottomOf="@id/main_asset_holder_fl"
         android:id="@+id/itemWheelLL"
         android:layout_width="match_parent"
         android:layout_height="100dp"

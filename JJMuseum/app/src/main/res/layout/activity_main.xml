@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:layout_weight="6"
             android:textStyle="bold"
-            android:textColor="@color/theme_darkgrey"
+            android:textColor="@color/theme_grey"
             android:text="JJ Museum"
             android:textSize="28dp"
             android:gravity="center_vertical" />

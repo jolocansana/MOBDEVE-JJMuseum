@@ -2,6 +2,7 @@ package ph.edu.dlsu.s12.jandj.jjmuseum;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import org.w3c.dom.Text;
 
@@ -21,8 +23,10 @@ public class PieceActivity extends AppCompatActivity {
     private Button btn_comment;
     private ImageView itemIv, item1Iv, item2Iv, item3Iv;
     private TextView header_title, item_nameTv, item_collectionTv, item_time_originTv, item_descriptionTv;
+    private VideoView videoView;
     private EditText commentEt;
     private ArrayList<String> assetsArrayList;
+    private Uri mediaUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,8 @@ public class PieceActivity extends AppCompatActivity {
         item1Iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                itemIv.setVisibility(View.VISIBLE);
+                videoView.setVisibility(View.GONE);
                 itemIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(0),null, getPackageName())));
             }
         });
@@ -48,6 +54,8 @@ public class PieceActivity extends AppCompatActivity {
         item2Iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                itemIv.setVisibility(View.VISIBLE);
+                videoView.setVisibility(View.GONE);
                 itemIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(1),null, getPackageName())));
             }
         });
@@ -55,7 +63,18 @@ public class PieceActivity extends AppCompatActivity {
         item3Iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                itemIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(2),null, getPackageName())));
+                if(!assetsArrayList.get(2).equals("nh03_3")) {
+                    itemIv.setVisibility(View.VISIBLE);
+                    videoView.setVisibility(View.GONE);
+                    itemIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(2),null, getPackageName())));
+                } else {
+                    itemIv.setVisibility(View.GONE);
+                    videoView.setVisibility(View.VISIBLE);
+                    mediaUri = Uri.parse("android.resource://" + getPackageName() +
+                            "/raw/" + "nh03_3");
+                    videoView.setVideoURI(mediaUri);
+                    videoView.start();
+                }
             }
         });
     }
@@ -77,6 +96,8 @@ public class PieceActivity extends AppCompatActivity {
 
         commentEt = (EditText)findViewById(R.id.commentEt);
 
+        videoView = findViewById(R.id.videoview);
+
         Bundle bundle = getIntent().getExtras();
 
         header_title.setText(bundle.getString("Name"));
@@ -96,6 +117,5 @@ public class PieceActivity extends AppCompatActivity {
         else{
             item3Iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(2),null, getPackageName())));
         }
-
     }
 }
