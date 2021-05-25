@@ -31,7 +31,6 @@ public class SectionListAdapter extends RecyclerView.Adapter<SectionListAdapter.
         // create the layout
         LayoutInflater inflater = LayoutInflater.from(context);
         View rowView = inflater.inflate(R.layout.pebble_layout, null);
-
         return new ViewHolder(rowView);
     }
 
