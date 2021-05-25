@@ -3,18 +3,18 @@
     "ID": "flr1",
     "Name": "1st Floor",
     "Description": "Natural History Collection, Gift Shop, Ticket Office",
-    "Floor plan": "FLR01"
+    "Floorplan": "flr01"
   },
   {
     "ID": "flr2",
     "Name": "2nd Floor",
     "Description": "Fine Arts and Archeologogy Collections, Recreational Area, Theater Room",
-    "Floor plan": "FLR02"
+    "Floorplan": "flr02"
   },
   {
     "ID": "flr3",
     "Name": "3rd Floor",
     "Description": "Ethnography Collection, Administration, Telescope room",
-    "Floor plan": "FLR03"
+    "Floorplan": "flr03"
   }
 ]
