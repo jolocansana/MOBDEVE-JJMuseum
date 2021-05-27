@@ -13,9 +13,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+
+import ph.edu.dlsu.s12.jandj.jjmuseum.model.Comment;
 
 public class PieceActivity extends AppCompatActivity {
 
@@ -24,9 +34,13 @@ public class PieceActivity extends AppCompatActivity {
     private ImageView itemIv, item1Iv, item2Iv, item3Iv;
     private TextView header_title, item_nameTv, item_collectionTv, item_time_originTv, item_descriptionTv;
     private VideoView videoView;
-    private EditText commentEt;
+    private EditText commentEt, nameEt;
     private ArrayList<String> assetsArrayList;
+    private ArrayList<Comment> comments;
     private Uri mediaUri;
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+    private String pieceID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +91,35 @@ public class PieceActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btn_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //only add comment if there are things in name and comment
+
+                Comment comment = new Comment(
+                        pieceID,
+                        nameEt.getText().toString(),
+                        commentEt.getText().toString()
+                );
+
+                myRef.push().setValue(comment,
+                        new DatabaseReference.CompletionListener(){
+                            @Override
+                            public void onComplete(DatabaseError error, DatabaseReference ref) {
+                                if(error != null){
+                                    Log.d("ERROR", "ERROR : " + error.getMessage());
+                                }else{
+                                    Log.d("SUCCESS", "DATA INSERTED");
+                                }
+                            }
+                        });
+
+                //after pushing, ET are left blank
+            }
+        });
+
     }
 
     private void init(){
@@ -95,6 +138,7 @@ public class PieceActivity extends AppCompatActivity {
         item_descriptionTv = (TextView)findViewById(R.id.item_descriptionTv);
 
         commentEt = (EditText)findViewById(R.id.commentEt);
+        nameEt = (EditText)findViewById(R.id.nameEt);
 
         videoView = findViewById(R.id.videoview);
 
@@ -106,6 +150,9 @@ public class PieceActivity extends AppCompatActivity {
         item_time_originTv.setText(bundle.getString("Time"));
         item_descriptionTv.setText(bundle.getString("Description"));
         assetsArrayList = bundle.getStringArrayList("Assets");
+        pieceID = bundle.getString("ID");
+
+        comments = new ArrayList<>();
 
         Log.d( "List Size", "Size is " + assetsArrayList.size());
         itemIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(0),null, getPackageName())));
@@ -117,5 +164,56 @@ public class PieceActivity extends AppCompatActivity {
         else{
             item3Iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(2),null, getPackageName())));
         }
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("app/comments");
+
+        ChildEventListener childEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
+
+                comments.add(snapshot.getValue(Comment.class));
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot snapshot, String previousChildName) { }
+
+            @Override
+            public void onChildRemoved( DataSnapshot snapshot) { }
+
+            @Override
+            public void onChildMoved(DataSnapshot snapshot, String previousChildName) { }
+
+            @Override
+            public void onCancelled(DatabaseError error) { }
+        };
+
+        myRef.addChildEventListener(childEventListener);
+
+        myRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete( Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    //Log.d("firebase", String.valueOf(task.getResult().getValue()));
+
+                    for(DataSnapshot data : task.getResult().getChildren()) {
+                        if(data.getValue(Comment.class).getId().equals(pieceID)){
+                            comments.add(data.getValue(Comment.class));
+                        }
+                    }
+                    /*
+                    for(int index = 0; index < comments.size(); index++){
+                        Log.d("contents", comments.get(index).getText());
+                    }
+                    */
+
+                }
+            }
+        });
+
     }
 }

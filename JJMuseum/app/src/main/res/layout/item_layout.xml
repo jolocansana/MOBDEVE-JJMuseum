@@ -119,8 +119,17 @@
         android:textSize="20dp"
         android:layout_marginTop="20dp"/>
 
-    <LinearLayout
+
+    <EditText
+        android:id="@+id/nameEt"
         app:layout_constraintTop_toBottomOf="@id/commentTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style_comment"
+        android:hint="Enter Name"/>
+
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/nameEt"
         android:id="@+id/commentLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
