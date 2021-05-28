@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -24,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ph.edu.dlsu.s12.jandj.jjmuseum.model.Comment;
 
@@ -41,11 +43,19 @@ public class PieceActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference myRef;
     private String pieceID;
+    private CommentAdapter commentAdapter;
+    private ListView commentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_piece);
+
+        comments = new ArrayList<>();
+        commentList = (ListView)findViewById(R.id.comment_listLv);
+
+        commentAdapter = new CommentAdapter(this, comments);
+        commentList.setAdapter(commentAdapter);
 
         init();
 
@@ -53,6 +63,8 @@ public class PieceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                nameEt.setText("");
+                commentEt.setText("");
             }
         });
 
@@ -98,25 +110,31 @@ public class PieceActivity extends AppCompatActivity {
 
                 //only add comment if there are things in name and comment
 
-                Comment comment = new Comment(
-                        pieceID,
-                        nameEt.getText().toString(),
-                        commentEt.getText().toString()
-                );
+                if (nameEt.getText().toString().equals("") || commentEt.getText().toString().equals("")){
+                    Log.d("Comment Status", "Comment Failed");
+                }else {
 
-                myRef.push().setValue(comment,
-                        new DatabaseReference.CompletionListener(){
-                            @Override
-                            public void onComplete(DatabaseError error, DatabaseReference ref) {
-                                if(error != null){
-                                    Log.d("ERROR", "ERROR : " + error.getMessage());
-                                }else{
-                                    Log.d("SUCCESS", "DATA INSERTED");
+                    Comment comment = new Comment(
+                            pieceID,
+                            nameEt.getText().toString(),
+                            commentEt.getText().toString()
+                    );
+
+                    myRef.push().setValue(comment,
+                            new DatabaseReference.CompletionListener() {
+                                @Override
+                                public void onComplete(DatabaseError error, DatabaseReference ref) {
+                                    if (error != null) {
+                                        Log.d("ERROR", "ERROR : " + error.getMessage());
+                                    } else {
+                                        Log.d("SUCCESS", "DATA INSERTED");
+                                    }
                                 }
-                            }
-                        });
+                            });
 
-                //after pushing, ET are left blank
+                    nameEt.setText("");
+                    commentEt.setText("");
+                }
             }
         });
 
@@ -140,6 +158,7 @@ public class PieceActivity extends AppCompatActivity {
         commentEt = (EditText)findViewById(R.id.commentEt);
         nameEt = (EditText)findViewById(R.id.nameEt);
 
+
         videoView = findViewById(R.id.videoview);
 
         Bundle bundle = getIntent().getExtras();
@@ -152,7 +171,6 @@ public class PieceActivity extends AppCompatActivity {
         assetsArrayList = bundle.getStringArrayList("Assets");
         pieceID = bundle.getString("ID");
 
-        comments = new ArrayList<>();
 
         Log.d( "List Size", "Size is " + assetsArrayList.size());
         itemIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(0),null, getPackageName())));
@@ -171,9 +189,7 @@ public class PieceActivity extends AppCompatActivity {
         ChildEventListener childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
-
                 comments.add(snapshot.getValue(Comment.class));
-
             }
 
             @Override
@@ -202,9 +218,10 @@ public class PieceActivity extends AppCompatActivity {
 
                     for(DataSnapshot data : task.getResult().getChildren()) {
                         if(data.getValue(Comment.class).getId().equals(pieceID)){
-                            comments.add(data.getValue(Comment.class));
+                            commentAdapter.addComment(data.getValue(Comment.class));
                         }
                     }
+
                     /*
                     for(int index = 0; index < comments.size(); index++){
                         Log.d("contents", comments.get(index).getText());
