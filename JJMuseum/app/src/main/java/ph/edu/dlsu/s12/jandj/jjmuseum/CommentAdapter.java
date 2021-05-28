@@ -25,7 +25,7 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
     }
 
     public void addComment(Comment comment){
-        commentsList.add(comment);
+        commentsList.add(0, comment);
         notifyDataSetChanged();
         Log.d("CommentSize", "Size is " + commentsList.size());
     }

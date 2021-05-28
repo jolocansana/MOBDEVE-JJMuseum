@@ -189,7 +189,10 @@ public class PieceActivity extends AppCompatActivity {
         ChildEventListener childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
-                comments.add(snapshot.getValue(Comment.class));
+//                comments.add(snapshot.getValue(Comment.class));
+                if(snapshot.getValue(Comment.class).getId().equals(pieceID)){
+                    commentAdapter.addComment(snapshot.getValue(Comment.class));
+                }
             }
 
             @Override
@@ -207,30 +210,30 @@ public class PieceActivity extends AppCompatActivity {
 
         myRef.addChildEventListener(childEventListener);
 
-        myRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete( Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
-                    //Log.d("firebase", String.valueOf(task.getResult().getValue()));
-
-                    for(DataSnapshot data : task.getResult().getChildren()) {
-                        if(data.getValue(Comment.class).getId().equals(pieceID)){
-                            commentAdapter.addComment(data.getValue(Comment.class));
-                        }
-                    }
-
-                    /*
-                    for(int index = 0; index < comments.size(); index++){
-                        Log.d("contents", comments.get(index).getText());
-                    }
-                    */
-
-                }
-            }
-        });
+//        myRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete( Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Log.e("firebase", "Error getting data", task.getException());
+//                }
+//                else {
+//                    //Log.d("firebase", String.valueOf(task.getResult().getValue()));
+//
+//                    for(DataSnapshot data : task.getResult().getChildren()) {
+//                        if(data.getValue(Comment.class).getId().equals(pieceID)){
+//                            commentAdapter.addComment(data.getValue(Comment.class));
+//                        }
+//                    }
+//
+//                    /*
+//                    for(int index = 0; index < comments.size(); index++){
+//                        Log.d("contents", comments.get(index).getText());
+//                    }
+//                    */
+//
+//                }
+//            }
+//        });
 
     }
 }
