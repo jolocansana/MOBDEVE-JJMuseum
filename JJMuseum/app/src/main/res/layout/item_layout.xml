@@ -133,41 +133,21 @@
             android:id="@+id/commentusername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="4"
+            android:weightSum="5"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp"
             >
 
-        <EditText
-            android:id="@+id/nameEt"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:padding="5dp"
-            android:layout_weight="3"
-            android:hint="Enter Username"
-            android:background="@drawable/style_comment" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            app:layout_constraintTop_toBottomOf="@id/nameEt"
-            android:id="@+id/commentLL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="4"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/style_comment">
-
             <EditText
-                android:id="@+id/commentEt"
+                android:id="@+id/nameEt"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="45dp"
                 android:padding="5dp"
-                android:layout_weight="3"
+                android:layout_weight="4"
+                android:hint="Enter Username"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/style_comment"
-                android:hint="Enter Comment"/>
+                android:background="@drawable/style_comment" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_comment"
@@ -178,6 +158,28 @@
                 android:textColor="@color/black"
                 android:layout_weight="1"
                 android:background="@drawable/style_custom_button"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/commentLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="5"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/style_comment">
+
+            <EditText
+                android:id="@+id/commentEt"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:padding="5dp"
+                android:layout_weight="3"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/style_comment"
+                android:hint="Enter Comment"/>
         </LinearLayout>
     </LinearLayout>
 
