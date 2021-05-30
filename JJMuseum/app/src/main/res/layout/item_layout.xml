@@ -147,6 +147,8 @@
                 android:layout_weight="4"
                 android:hint="Enter Username"
                 android:layout_marginRight="20dp"
+                android:maxLines="1"
+                android:inputType="text|textCapSentences"
                 android:background="@drawable/style_comment" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -178,6 +180,8 @@
                 android:padding="5dp"
                 android:layout_weight="3"
                 android:layout_marginRight="20dp"
+                android:maxLines="1"
+                android:inputType="text|textCapSentences"
                 android:background="@drawable/style_comment"
                 android:hint="Enter Comment"/>
         </LinearLayout>
