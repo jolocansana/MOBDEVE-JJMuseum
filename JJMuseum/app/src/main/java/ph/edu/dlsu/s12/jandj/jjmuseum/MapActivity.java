@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,7 +30,8 @@ public class MapActivity extends AppCompatActivity {
 
     private ImageView back_button;
     private TextView floor_name, floor_description;
-    private ImageView mapIv, map1, map2, map3;
+    private Button map1, map2, map3;
+    private ImageView mapIv;
 
     private ArrayList<Floor> mapArrayList;
 
@@ -50,6 +52,9 @@ public class MapActivity extends AppCompatActivity {
         map1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                map1.setBackgroundColor(getResources().getColor(R.color.theme_darkgrey));
+                map2.setBackgroundColor(getResources().getColor(R.color.theme_orange));
+                map3.setBackgroundColor(getResources().getColor(R.color.theme_orange));
                 floor_name.setText(mapArrayList.get(0).getName());
                 floor_description.setText(mapArrayList.get(0).getDescription());
                 mapIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+mapArrayList.get(0).getFloorplan(),null, getPackageName())));
@@ -59,6 +64,9 @@ public class MapActivity extends AppCompatActivity {
         map2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                map1.setBackgroundColor(getResources().getColor(R.color.theme_orange));
+                map2.setBackgroundColor(getResources().getColor(R.color.theme_darkgrey));
+                map3.setBackgroundColor(getResources().getColor(R.color.theme_orange));
                 floor_name.setText(mapArrayList.get(1).getName());
                 floor_description.setText(mapArrayList.get(1).getDescription());
                 mapIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+mapArrayList.get(1).getFloorplan(),null, getPackageName())));
@@ -68,6 +76,9 @@ public class MapActivity extends AppCompatActivity {
         map3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                map1.setBackgroundColor(getResources().getColor(R.color.theme_orange));
+                map2.setBackgroundColor(getResources().getColor(R.color.theme_orange));
+                map3.setBackgroundColor(getResources().getColor(R.color.theme_darkgrey));
                 floor_name.setText(mapArrayList.get(2).getName());
                 floor_description.setText(mapArrayList.get(2).getDescription());
                 mapIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+mapArrayList.get(2).getFloorplan(),null, getPackageName())));
@@ -83,9 +94,9 @@ public class MapActivity extends AppCompatActivity {
         floor_description = (TextView) findViewById(R.id.floor_descTv);
 
         mapIv = (ImageView) findViewById(R.id.floorIv);
-        map1 = (ImageView) findViewById(R.id.map1Iv);
-        map2 = (ImageView) findViewById(R.id.map2Iv);
-        map3 = (ImageView) findViewById(R.id.map3Iv);
+        map1 = (Button) findViewById(R.id.map1Iv);
+        map2 = (Button) findViewById(R.id.map2Iv);
+        map3 = (Button) findViewById(R.id.map3Iv);
 
         String floorJSONString = jsonParser.getJsonFromAssets(getApplicationContext(), "floordata.json");
         Log.d("JSON", floorJSONString);
@@ -95,9 +106,9 @@ public class MapActivity extends AppCompatActivity {
         mapArrayList = gson.fromJson(floorJSONString, floorType);
 
         mapIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+mapArrayList.get(0).getFloorplan(),null, getPackageName())));
-        map1.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+mapArrayList.get(0).getFloorplan(),null, getPackageName())));
-        map2.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+mapArrayList.get(1).getFloorplan(),null, getPackageName())));
-        map3.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+mapArrayList.get(2).getFloorplan(),null, getPackageName())));
+//        map1.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+mapArrayList.get(0).getFloorplan(),null, getPackageName())));
+//        map2.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+mapArrayList.get(1).getFloorplan(),null, getPackageName())));
+//        map3.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+mapArrayList.get(2).getFloorplan(),null, getPackageName())));
         floor_name.setText(mapArrayList.get(0).getName());
         floor_description.setText(mapArrayList.get(0).getDescription());
 

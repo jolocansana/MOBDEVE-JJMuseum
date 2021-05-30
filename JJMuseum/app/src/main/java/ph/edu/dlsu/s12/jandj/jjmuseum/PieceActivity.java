@@ -1,15 +1,21 @@
 package ph.edu.dlsu.s12.jandj.jjmuseum;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.widget.NestedScrollView;
 
+import android.app.ActionBar;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -45,6 +51,9 @@ public class PieceActivity extends AppCompatActivity {
     private String pieceID;
     private CommentAdapter commentAdapter;
     private ListView commentList;
+    private NestedScrollView commentsSv;
+
+    private ConstraintLayout.LayoutParams constraintLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,6 +167,7 @@ public class PieceActivity extends AppCompatActivity {
         commentEt = (EditText)findViewById(R.id.commentEt);
         nameEt = (EditText)findViewById(R.id.nameEt);
 
+        commentsSv = findViewById(R.id.commentsSv);
 
         videoView = findViewById(R.id.videoview);
 
@@ -184,7 +194,7 @@ public class PieceActivity extends AppCompatActivity {
         }
 
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("app/comments");
+        myRef = database.getReference("app/comments");;
 
         ChildEventListener childEventListener = new ChildEventListener() {
             @Override
@@ -192,6 +202,11 @@ public class PieceActivity extends AppCompatActivity {
 //                comments.add(snapshot.getValue(Comment.class));
                 if(snapshot.getValue(Comment.class).getId().equals(pieceID)){
                     commentAdapter.addComment(snapshot.getValue(Comment.class));
+                    if (comments.size() < 5) {
+                        constraintLayout = new ConstraintLayout.LayoutParams(ActionBar.LayoutParams.FILL_PARENT, 150*comments.size());
+                        constraintLayout.topToBottom = R.id.comments;
+                        commentsSv.setLayoutParams(constraintLayout);
+                    }
                 }
             }
 
