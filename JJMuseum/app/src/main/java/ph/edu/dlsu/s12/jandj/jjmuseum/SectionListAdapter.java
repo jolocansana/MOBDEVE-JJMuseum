@@ -19,11 +19,25 @@ public class SectionListAdapter extends RecyclerView.Adapter<SectionListAdapter.
     private Context context;
     private ItemClickListener itemClickListener;
 
+    /*
+     * SectionListAdapter
+     * constructs the SectionListAdapter object
+     * ArrayList<Pebble> sectionArrayList - collection of sections
+     * Context context - context of the current activity
+     * void
+     */
     public SectionListAdapter(ArrayList<Pebble> sectionArrayList, Context context) {
         this.sectionArrayList = sectionArrayList;
         this.context = context;
     }
 
+    /*
+     *  onCreateViewHolder
+     *  Inflates a new layout
+     *  ViewGroup parent - special view that contains other view
+     *  int viewType - integer that determines which ViewHolder should the item data bind
+     *  new layout ViewHolder(rowView)
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,6 +48,13 @@ public class SectionListAdapter extends RecyclerView.Adapter<SectionListAdapter.
         return new ViewHolder(rowView);
     }
 
+    /*
+     *  onBindViewHolder
+     *  Recycling the view
+     *  ViewHolder holder - holder for the new layout
+     *  int position - current position of the added viewholder
+     *  void
+     */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Pebble info = sectionArrayList.get(position);
@@ -42,6 +63,12 @@ public class SectionListAdapter extends RecyclerView.Adapter<SectionListAdapter.
         holder.background_image.setImageResource(drawableId);
     }
 
+    /*
+     *  getItemCount
+     *  getting the size of the sectionArrayList
+     *  void
+     *  int sectionArrayList.size()
+     */
     @Override
     public int getItemCount() {
         return sectionArrayList.size();
@@ -51,13 +78,24 @@ public class SectionListAdapter extends RecyclerView.Adapter<SectionListAdapter.
         public TextView text_caption;
         public ImageView background_image;
 
+        /*
+         * PieceHolder
+         * constructs the ViewHolder object
+         * View itemView - new layout created for the object
+         * void
+         */
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             background_image = (ImageView) itemView.findViewById(R.id.background_image);
             text_caption = (TextView) itemView.findViewById(R.id.text_caption);
             itemView.setOnClickListener(this);
         }
-
+        /*
+         *  onClick
+         *  gets the position of the clicked object
+         *  View view - reference to current view
+         *  void
+         */
         public void onClick(View view) {
             if (itemClickListener != null) itemClickListener.onItemClick(view, getAdapterPosition());
         }

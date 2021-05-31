@@ -19,11 +19,25 @@ public class PieceListAdapter extends RecyclerView.Adapter<PieceListAdapter.Piec
     private Context context;
     private PieceListAdapter.ItemClickListener itemClickListener;
 
+    /*
+     * PieceListAdapter
+     * constructs the PieceListAdapter object
+     * ArrayList<Pebble> pieceArrayList - collection of pieces
+     * Context context - context of the current activity
+     * void
+     */
     public PieceListAdapter(ArrayList<Pebble> pieceArrayList, Context context) {
         this.pieceArrayList = pieceArrayList;
         this.context = context;
     }
 
+    /*
+     *  onCreateViewHolder
+     *  Inflates a new layout
+     *  ViewGroup parent - special view that contains other view
+     *  int viewType - integer that determines which ViewHolder should the item data bind
+     *  new layout PieceViewHolder(rowView)
+     */
     @NonNull
     @Override
     public PieceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,6 +48,13 @@ public class PieceListAdapter extends RecyclerView.Adapter<PieceListAdapter.Piec
         return new PieceViewHolder(rowView);
     }
 
+    /*
+     *  onBindViewHolder
+     *  Recycling the view
+     *  PieceListAdapter.PieceViewHolder holder - holder for the new layout
+     *  int position - current position of the added viewholder
+     *  void
+     */
     @Override
     public void onBindViewHolder(@NonNull PieceListAdapter.PieceViewHolder holder, int position) {
         Pebble info = pieceArrayList.get(position);
@@ -42,6 +63,12 @@ public class PieceListAdapter extends RecyclerView.Adapter<PieceListAdapter.Piec
         holder.background_image.setImageResource(drawableId);
     }
 
+    /*
+     *  getItemCount
+     *  getting the size of the pieceArrayList
+     *  void
+     *  int pieceArrayList.size()
+     */
     @Override
     public int getItemCount() {
         return pieceArrayList.size();
@@ -51,15 +78,28 @@ public class PieceListAdapter extends RecyclerView.Adapter<PieceListAdapter.Piec
         public TextView text_caption;
         public ImageView background_image;
 
+        /*
+         * PieceHolder
+         * constructs the PieceViewHolder object
+         * View itemView - new layout created for the object
+         * void
+         */
         public PieceViewHolder(@NonNull View itemView) {
             super(itemView);
-            background_image = (ImageView) itemView.findViewById(R.id.background_image);
-            text_caption = (TextView) itemView.findViewById(R.id.text_caption);
+            background_image = itemView.findViewById(R.id.background_image);
+            text_caption =  itemView.findViewById(R.id.text_caption);
             itemView.setOnClickListener(this);
         }
 
+        /*
+         *  onClick
+         *  gets the position of the clicked object
+         *  View view - reference to current view
+         *  void
+         */
         public void onClick(View view) {
-            if (itemClickListener != null) itemClickListener.onItemClick(view, getAdapterPosition());
+            if (itemClickListener != null)
+                itemClickListener.onItemClick(view, getAdapterPosition());
         }
     }
 

@@ -18,18 +18,39 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
     private Activity activity;
     private ArrayList<Comment> commentsList;
 
+    /*
+     * CommentAdapter
+     * constructs the CommentAdapter object and references the layout as well as the activity
+     * Activity activity - current activity that it references
+     * ArrayList<Comment> commentsArrayList - collection of comments
+     * void
+     */
     public CommentAdapter(Activity activity, ArrayList<Comment> commentsArrayList){
         super(activity, R.layout.comment_layout, commentsArrayList);
         this.activity = activity;
         this.commentsList = commentsArrayList;
     }
 
+    /*
+     * addComment
+     * adds a comment to the arrayList comment and notify changes
+     * Comment comment - new comment object
+     * void
+     */
     public void addComment(Comment comment){
         commentsList.add(0, comment);
         notifyDataSetChanged();
         Log.d("CommentSize", "Size is " + commentsList.size());
     }
 
+    /*
+     *  getView
+     *  Attaches an onClickEvent to all items in RecyclerView
+     *  View convertView - reference to an inflatable view
+     *  int position - position of the added comment
+     *  ViewGroup parent - special view that contains other view
+     *  View rowView - reference to the inflatable view created that contains the new comment
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         View rowView = convertView;
@@ -40,8 +61,8 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
             rowView = inflater.inflate(R.layout.comment_layout, null);
 
             ViewHolder commentViewHolder = new ViewHolder();
-            commentViewHolder.id = (TextView) rowView.findViewById(R.id.usernameTv);
-            commentViewHolder.text = (TextView) rowView.findViewById(R.id.textTv);
+            commentViewHolder.id = rowView.findViewById(R.id.usernameTv);
+            commentViewHolder.text = rowView.findViewById(R.id.textTv);
 
             rowView.setTag(commentViewHolder);
         }
