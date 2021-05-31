@@ -101,9 +101,57 @@
                 />
 
             <TextView
+                android:id="@+id/directorMsgTv"
                 app:layout_constraintTop_toBottomOf="@id/msgDirectorsTv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/reachUsTv"
+                app:layout_constraintTop_toBottomOf="@id/directorMsgTv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Reach Us Via"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                android:layout_margin="20dp"/>
+
+            <LinearLayout
+                app:layout_constraintTop_toBottomOf="@id/reachUsTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/fbIv"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/fb"
+                    android:tag="https://www.facebook.com/nationalmuseumofthephilippines/"
+                    android:onClick="openBrowser"/>
+
+
+                <ImageView
+                    android:id="@+id/igIv"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ig"
+                    android:tag="https://instagram.com/natmuseumph"
+                    android:onClick="openBrowser"/>
+
+                <ImageView
+                    android:id="@+id/twtIv"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/twt"
+                    android:tag="https://twitter.com/natmuseumph"
+                    android:onClick="openBrowser"/>
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

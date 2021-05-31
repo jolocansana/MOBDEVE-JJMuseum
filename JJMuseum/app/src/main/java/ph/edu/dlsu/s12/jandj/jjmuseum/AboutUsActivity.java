@@ -2,6 +2,8 @@ package ph.edu.dlsu.s12.jandj.jjmuseum;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +37,28 @@ public class AboutUsActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+
+    /*
+     *  openBrowser
+     *  sets the action to open an URL
+     *  url declared in the XML tag
+     *  redirected to the URL provided
+     */
+    public void openBrowser(View view){
+
+        //Get url from tag
+        String url = (String)view.getTag();
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+
+        //pass the url to intent data
+        intent.setData(Uri.parse(url));
+
+        startActivity(intent);
     }
 
     /*
