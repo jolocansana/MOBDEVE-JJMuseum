@@ -155,7 +155,7 @@
                 android:id="@+id/btn_comment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Send"
+                android:text="Post"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_weight="1"
