@@ -7,42 +7,34 @@ import androidx.core.widget.NestedScrollView;
 import android.app.ActionBar;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.VideoView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.List;
 
 import ph.edu.dlsu.s12.jandj.jjmuseum.model.Comment;
 
 public class PieceActivity extends AppCompatActivity {
 
-    private ImageView back_button;
-    private Button btn_comment;
-    private ImageView itemIv, item1Iv, item2Iv, item3Iv;
-    private TextView header_title, item_nameTv, item_collectionTv, item_time_originTv, item_descriptionTv;
+    private ImageView back_btn;
+    private Button comment_btn;
+    private ImageView item_iv, item1_iv, item2_iv, item3_iv;
+    private TextView header_title_tv, item_name_tv, item_collection_tv, item_time_origin_tv, item_description_tv;
     private VideoView videoView;
-    private EditText commentEt, nameEt;
+    private EditText comment_et, name_et;
+
     private ArrayList<String> assetsArrayList;
     private ArrayList<Comment> comments;
     private Uri mediaUri;
@@ -68,49 +60,49 @@ public class PieceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_piece);
 
         comments = new ArrayList<>();
-        commentList = (ListView)findViewById(R.id.comment_listLv);
+        commentList = (ListView)findViewById(R.id.comment_list_lv);
 
         commentAdapter = new CommentAdapter(this, comments);
         commentList.setAdapter(commentAdapter);
 
         init();
 
-        back_button.setOnClickListener(new View.OnClickListener() {
+        back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                nameEt.setText("");
-                commentEt.setText("");
+                name_et.setText("");
+                comment_et.setText("");
             }
         });
 
-        item1Iv.setOnClickListener(new View.OnClickListener() {
+        item1_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                itemIv.setVisibility(View.VISIBLE);
+                item_iv.setVisibility(View.VISIBLE);
                 videoView.setVisibility(View.GONE);
-                itemIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(0),null, getPackageName())));
+                item_iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(0),null, getPackageName())));
             }
         });
 
-        item2Iv.setOnClickListener(new View.OnClickListener() {
+        item2_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                itemIv.setVisibility(View.VISIBLE);
+                item_iv.setVisibility(View.VISIBLE);
                 videoView.setVisibility(View.GONE);
-                itemIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(1),null, getPackageName())));
+                item_iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(1),null, getPackageName())));
             }
         });
 
-        item3Iv.setOnClickListener(new View.OnClickListener() {
+        item3_iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!assetsArrayList.get(2).equals("nh03_3")) {
-                    itemIv.setVisibility(View.VISIBLE);
+                    item_iv.setVisibility(View.VISIBLE);
                     videoView.setVisibility(View.GONE);
-                    itemIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(2),null, getPackageName())));
+                    item_iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(2),null, getPackageName())));
                 } else {
-                    itemIv.setVisibility(View.GONE);
+                    item_iv.setVisibility(View.GONE);
                     videoView.setVisibility(View.VISIBLE);
                     mediaUri = Uri.parse("android.resource://" + getPackageName() +
                             "/raw/" + "nh03_3");
@@ -120,20 +112,20 @@ public class PieceActivity extends AppCompatActivity {
             }
         });
 
-        btn_comment.setOnClickListener(new View.OnClickListener() {
+        comment_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 //only add comment if there are things in name and comment
 
-                if (nameEt.getText().toString().equals("") || commentEt.getText().toString().equals("")){
+                if (name_et.getText().toString().equals("") || comment_et.getText().toString().equals("")){
                     Log.d("Comment Status", "Comment Failed");
                 }else {
 
                     Comment comment = new Comment(
                             pieceID,
-                            nameEt.getText().toString(),
-                            commentEt.getText().toString()
+                            name_et.getText().toString(),
+                            comment_et.getText().toString()
                     );
 
                     myRef.push().setValue(comment,
@@ -148,8 +140,8 @@ public class PieceActivity extends AppCompatActivity {
                                 }
                             });
 
-                    nameEt.setText("");
-                    commentEt.setText("");
+                    name_et.setText("");
+                    comment_et.setText("");
                 }
             }
         });
@@ -162,47 +154,47 @@ public class PieceActivity extends AppCompatActivity {
      *  void
      */
     private void init(){
-        back_button = (ImageView) findViewById(R.id.back_button);
-        btn_comment = (Button) findViewById(R.id.btn_comment);
+        back_btn = (ImageView) findViewById(R.id.back_btn);
+        comment_btn = (Button) findViewById(R.id.comment_btn);
 
-        itemIv = (ImageView) findViewById(R.id.itemIv);
-        item1Iv = (ImageView) findViewById(R.id.item1Iv);
-        item2Iv = (ImageView) findViewById(R.id.item2Iv);
-        item3Iv = (ImageView) findViewById(R.id.item3Iv);
+        item_iv = (ImageView) findViewById(R.id.item_iv);
+        item1_iv = (ImageView) findViewById(R.id.item1_iv);
+        item2_iv = (ImageView) findViewById(R.id.item2_iv);
+        item3_iv = (ImageView) findViewById(R.id.item3_iv);
 
-        header_title = (TextView) findViewById(R.id.header_title);
-        item_nameTv = (TextView)findViewById(R.id.item_nameTv);
-        item_collectionTv = (TextView)findViewById(R.id.item_collectionTv);
-        item_time_originTv = (TextView)findViewById(R.id.item_time_originTv);
-        item_descriptionTv = (TextView)findViewById(R.id.item_descriptionTv);
+        header_title_tv = (TextView) findViewById(R.id.header_title_tv);
+        item_name_tv = (TextView)findViewById(R.id.item_name_tv);
+        item_collection_tv = (TextView)findViewById(R.id.item_collection_tv);
+        item_time_origin_tv = (TextView)findViewById(R.id.item_time_origin_tv);
+        item_description_tv = (TextView)findViewById(R.id.item_description_tv);
 
-        commentEt = (EditText)findViewById(R.id.commentEt);
-        nameEt = (EditText)findViewById(R.id.nameEt);
+        comment_et = (EditText)findViewById(R.id.comment_et);
+        name_et = (EditText)findViewById(R.id.name_et);
 
-        commentsSv = findViewById(R.id.commentsSv);
+        commentsSv = findViewById(R.id.comments_sv);
 
         videoView = findViewById(R.id.videoview);
 
         Bundle bundle = getIntent().getExtras();
 
-        header_title.setText(bundle.getString("Name"));
-        item_nameTv.setText(bundle.getString("Name"));
-        item_collectionTv.setText(bundle.getString("Collection"));
-        item_time_originTv.setText(bundle.getString("Time"));
-        item_descriptionTv.setText(bundle.getString("Description"));
+        header_title_tv.setText(bundle.getString("Name"));
+        item_name_tv.setText(bundle.getString("Name"));
+        item_collection_tv.setText(bundle.getString("Collection"));
+        item_time_origin_tv.setText(bundle.getString("Time"));
+        item_description_tv.setText(bundle.getString("Description"));
         assetsArrayList = bundle.getStringArrayList("Assets");
         pieceID = bundle.getString("ID");
 
 
         Log.d( "List Size", "Size is " + assetsArrayList.size());
-        itemIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(0),null, getPackageName())));
-        item1Iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(0),null, getPackageName())));
-        item2Iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(1),null, getPackageName())));
+        item_iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(0),null, getPackageName())));
+        item1_iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(0),null, getPackageName())));
+        item2_iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(1),null, getPackageName())));
         if ((assetsArrayList.get(2)).equals("")){
-            item3Iv.setVisibility(View.GONE);
+            item3_iv.setVisibility(View.GONE);
         }
         else{
-            item3Iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(2),null, getPackageName())));
+            item3_iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+assetsArrayList.get(2),null, getPackageName())));
         }
 
         database = FirebaseDatabase.getInstance();
@@ -216,7 +208,7 @@ public class PieceActivity extends AppCompatActivity {
                     commentAdapter.addComment(snapshot.getValue(Comment.class));
                     if (comments.size() < 5) {
                         constraintLayout = new ConstraintLayout.LayoutParams(ActionBar.LayoutParams.FILL_PARENT, 150*comments.size());
-                        constraintLayout.topToBottom = R.id.comments;
+                        constraintLayout.topToBottom = R.id.comments_ll;
                         commentsSv.setLayoutParams(constraintLayout);
                     }
                 }

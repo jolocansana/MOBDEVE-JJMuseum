@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import com.google.gson.Gson;
@@ -24,9 +23,9 @@ import ph.edu.dlsu.s12.jandj.jjmuseum.utils.jsonParser;
 
 public class MainActivity extends AppCompatActivity implements SectionListAdapter.ItemClickListener {
 
-    private ImageView search_button, qr_button;
-    private RecyclerView horizontalScrollView;
-    private CardView cv_map_button, cv_about_button;
+    private ImageView search_btn, qr_btn;
+    private RecyclerView horizontal_sv;
+    private CardView map_button_cv, about_button_cv;
 
     private SectionListAdapter sectionListAdapter;
     private ArrayList<Pebble> sectionsArrayList;
@@ -48,10 +47,10 @@ public class MainActivity extends AppCompatActivity implements SectionListAdapte
 
         sectionListAdapter = new SectionListAdapter(sectionsArrayList, this);
         sectionListAdapter.setClickListener(this);
-        horizontalScrollView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        horizontalScrollView.setAdapter(sectionListAdapter);
+        horizontal_sv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        horizontal_sv.setAdapter(sectionListAdapter);
 
-        search_button.setOnClickListener(new View.OnClickListener() {
+        search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent searchActivity = new Intent(getApplicationContext(), SearchActivity.class);
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements SectionListAdapte
             }
         });
 
-        qr_button.setOnClickListener(new View.OnClickListener() {
+        qr_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent QRActivity = new Intent(getApplicationContext(), QRActivity.class);
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements SectionListAdapte
             }
         });
 
-        cv_map_button.setOnClickListener(new View.OnClickListener() {
+        map_button_cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent MapActivity = new Intent(getApplicationContext(), MapActivity.class);
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements SectionListAdapte
             }
         });
 
-        cv_about_button.setOnClickListener(new View.OnClickListener() {
+        about_button_cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent AboutUsActivity = new Intent(getApplicationContext(), AboutUsActivity.class);
@@ -90,16 +89,16 @@ public class MainActivity extends AppCompatActivity implements SectionListAdapte
      *  void
      */
     private void init() {
-        horizontalScrollView = (RecyclerView) findViewById(R.id.horizontal_scrollview);
-        search_button = (ImageView) findViewById(R.id.search_button);
-        qr_button = (ImageView) findViewById(R.id.qr_button);
+        horizontal_sv = (RecyclerView) findViewById(R.id.horizontal_rv);
+        search_btn = (ImageView) findViewById(R.id.search_btn);
+        qr_btn = (ImageView) findViewById(R.id.qr_btn);
 
-        cv_about_button = (CardView) findViewById(R.id.cv_about_button);
-        cv_map_button = (CardView) findViewById(R.id.cv_map_button);
+        about_button_cv = (CardView) findViewById(R.id.about_button_cv);
+        map_button_cv = (CardView) findViewById(R.id.map_button_cv);
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(horizontalScrollView.getContext(), DividerItemDecoration.HORIZONTAL);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(horizontal_sv.getContext(), DividerItemDecoration.HORIZONTAL);
         dividerItemDecoration.setDrawable(getDrawable(R.drawable.horizontal_spacing));
-        horizontalScrollView.addItemDecoration(dividerItemDecoration);
+        horizontal_sv.addItemDecoration(dividerItemDecoration);
 
 
         // Gets collection data from json file

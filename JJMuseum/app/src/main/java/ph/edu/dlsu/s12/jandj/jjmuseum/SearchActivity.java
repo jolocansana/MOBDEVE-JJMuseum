@@ -6,11 +6,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,8 +25,8 @@ import ph.edu.dlsu.s12.jandj.jjmuseum.utils.jsonParser;
 
 public class SearchActivity extends AppCompatActivity implements PieceListAdapter.ItemClickListener {
 
-    private ImageView back_button, search_button;
-    private RecyclerView vertical_recyclerview;
+    private ImageView back_btn, search_btn;
+    private RecyclerView vertical_rv;
     private EditText search_field_et;
     private TextView no_results_tv;
 
@@ -51,14 +49,14 @@ public class SearchActivity extends AppCompatActivity implements PieceListAdapte
 
         init();
 
-        back_button.setOnClickListener(new View.OnClickListener() {
+        back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
 
-        search_button.setOnClickListener(new View.OnClickListener() {
+        search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 search(search_field_et.getText().toString());
@@ -67,16 +65,16 @@ public class SearchActivity extends AppCompatActivity implements PieceListAdapte
 
         pieceListAdapter = new PieceListAdapter(piecePebbleArrayList, this);
         pieceListAdapter.setClickListener(this);
-        vertical_recyclerview.setLayoutManager(new GridLayoutManager(this, 2));
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(vertical_recyclerview.getContext(), DividerItemDecoration.HORIZONTAL);
+        vertical_rv.setLayoutManager(new GridLayoutManager(this, 2));
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(vertical_rv.getContext(), DividerItemDecoration.HORIZONTAL);
         dividerItemDecoration.setDrawable(getDrawable(R.drawable.horizontal_spacing));
-        vertical_recyclerview.addItemDecoration(dividerItemDecoration);
+        vertical_rv.addItemDecoration(dividerItemDecoration);
 
-        dividerItemDecoration = new DividerItemDecoration(vertical_recyclerview.getContext(), DividerItemDecoration.VERTICAL);
+        dividerItemDecoration = new DividerItemDecoration(vertical_rv.getContext(), DividerItemDecoration.VERTICAL);
         dividerItemDecoration.setDrawable(getDrawable(R.drawable.vertical_spacing));
-        vertical_recyclerview.addItemDecoration(dividerItemDecoration);
+        vertical_rv.addItemDecoration(dividerItemDecoration);
 
-        vertical_recyclerview.setAdapter(pieceListAdapter);
+        vertical_rv.setAdapter(pieceListAdapter);
     }
 
     /*
@@ -85,12 +83,12 @@ public class SearchActivity extends AppCompatActivity implements PieceListAdapte
      *  void
      */
     private void init() {
-        back_button = (ImageView) findViewById(R.id.back_button);
-        search_button = (ImageView) findViewById(R.id.search_button);
+        back_btn = (ImageView) findViewById(R.id.back_btn);
+        search_btn = (ImageView) findViewById(R.id.search_btn);
         search_field_et = (EditText) findViewById(R.id.search_field_et);
         no_results_tv = (TextView) findViewById(R.id.no_results_tv);
 
-        vertical_recyclerview = (RecyclerView) findViewById(R.id.vertical_recyclerview);
+        vertical_rv = (RecyclerView) findViewById(R.id.vertical_rv);
 
         String piecesJSONString = jsonParser.getJsonFromAssets(getApplicationContext(), "piecesdata.json");
         Log.d("JSON", piecesJSONString);

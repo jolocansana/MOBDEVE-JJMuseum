@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,10 +24,10 @@ import ph.edu.dlsu.s12.jandj.jjmuseum.utils.jsonParser;
 
 public class SectionActivity extends AppCompatActivity implements PieceListAdapter.ItemClickListener {
 
-    private ImageView back_button;
-    private RecyclerView vertical_recyclerview;
-    private TextView section_name, section_description;
-    private ImageView section_header_photo;
+    private ImageView back_btn;
+    private RecyclerView vertical_rv;
+    private TextView section_name_tv, section_description_tv;
+    private ImageView section_header_photo_iv;
 
     private ArrayList<Pebble> piecePebbleArrayList;
     private PieceListAdapter pieceListAdapter;
@@ -48,7 +47,7 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
 
         init();
 
-        back_button.setOnClickListener(new View.OnClickListener() {
+        back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -57,16 +56,16 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
 
         pieceListAdapter = new PieceListAdapter(piecePebbleArrayList, this);
         pieceListAdapter.setClickListener(this);
-        vertical_recyclerview.setLayoutManager(new GridLayoutManager(this, 2));
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(vertical_recyclerview.getContext(), DividerItemDecoration.HORIZONTAL);
+        vertical_rv.setLayoutManager(new GridLayoutManager(this, 2));
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(vertical_rv.getContext(), DividerItemDecoration.HORIZONTAL);
         dividerItemDecoration.setDrawable(getDrawable(R.drawable.horizontal_spacing));
-        vertical_recyclerview.addItemDecoration(dividerItemDecoration);
+        vertical_rv.addItemDecoration(dividerItemDecoration);
 
-        dividerItemDecoration = new DividerItemDecoration(vertical_recyclerview.getContext(), DividerItemDecoration.VERTICAL);
+        dividerItemDecoration = new DividerItemDecoration(vertical_rv.getContext(), DividerItemDecoration.VERTICAL);
         dividerItemDecoration.setDrawable(getDrawable(R.drawable.vertical_spacing));
-        vertical_recyclerview.addItemDecoration(dividerItemDecoration);
+        vertical_rv.addItemDecoration(dividerItemDecoration);
 
-        vertical_recyclerview.setAdapter(pieceListAdapter);
+        vertical_rv.setAdapter(pieceListAdapter);
     }
 
     /*
@@ -75,18 +74,18 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
      *  void
      */
     private void init() {
-        back_button = (ImageView) findViewById(R.id.back_button);
+        back_btn = (ImageView) findViewById(R.id.back_btn);
 
-        vertical_recyclerview = (RecyclerView) findViewById(R.id.vertical_recyclerview);
+        vertical_rv = (RecyclerView) findViewById(R.id.vertical_rv);
 
-        section_name = (TextView) findViewById(R.id.section_name);
-        section_description = (TextView) findViewById(R.id.section_description);
-        section_header_photo = (ImageView) findViewById(R.id.section_header_photo);
+        section_name_tv = (TextView) findViewById(R.id.section_name_tv);
+        section_description_tv = (TextView) findViewById(R.id.section_description_tv);
+        section_header_photo_iv = (ImageView) findViewById(R.id.section_header_photo_iv);
 
         Bundle bundle = getIntent().getExtras();
-        section_name.setText(bundle.getString("Collection"));
-        section_description.setText(bundle.getString("Description"));
-        section_header_photo.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+bundle.get("Header"),null, getPackageName())));
+        section_name_tv.setText(bundle.getString("Collection"));
+        section_description_tv.setText(bundle.getString("Description"));
+        section_header_photo_iv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+bundle.get("Header"),null, getPackageName())));
 
         String piecesJSONString = jsonParser.getJsonFromAssets(getApplicationContext(), "piecesdata.json");
         Log.d("JSON", piecesJSONString);
