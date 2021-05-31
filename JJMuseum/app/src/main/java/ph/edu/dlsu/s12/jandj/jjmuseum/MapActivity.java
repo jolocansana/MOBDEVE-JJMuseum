@@ -35,6 +35,13 @@ public class MapActivity extends AppCompatActivity {
 
     private ArrayList<Floor> mapArrayList;
 
+
+    /*
+     *  onCreate
+     *  function called on creation of the activity (as seen in Activity Lifecycle)
+     *  Bundle savedInstanceState - reference to the Bundle passed on to activity
+     *  void
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +94,11 @@ public class MapActivity extends AppCompatActivity {
 
     }
 
+    /*
+     *  init
+     *  initializes XML references and gets data from json files using Gson()
+     *  void
+     */
     private void init(){
         back_button = (ImageView) findViewById(R.id.back_button);
 
@@ -98,6 +110,7 @@ public class MapActivity extends AppCompatActivity {
         map2 = (Button) findViewById(R.id.map2Iv);
         map3 = (Button) findViewById(R.id.map3Iv);
 
+        // Gets floor information from JSON
         String floorJSONString = jsonParser.getJsonFromAssets(getApplicationContext(), "floordata.json");
         Log.d("JSON", floorJSONString);
 
@@ -106,9 +119,6 @@ public class MapActivity extends AppCompatActivity {
         mapArrayList = gson.fromJson(floorJSONString, floorType);
 
         mapIv.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+mapArrayList.get(0).getFloorplan(),null, getPackageName())));
-//        map1.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+mapArrayList.get(0).getFloorplan(),null, getPackageName())));
-//        map2.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+mapArrayList.get(1).getFloorplan(),null, getPackageName())));
-//        map3.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("@drawable/"+mapArrayList.get(2).getFloorplan(),null, getPackageName())));
         floor_name.setText(mapArrayList.get(0).getName());
         floor_description.setText(mapArrayList.get(0).getDescription());
 

@@ -35,6 +35,12 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
     private ArrayList<Piece> pieceArrayList;
     private ArrayList<Piece> filteredArrayList;
 
+    /*
+     *  onCreate
+     *  function called on creation of the activity (as seen in Activity Lifecycle)
+     *  Bundle savedInstanceState - reference to the Bundle passed on to activity
+     *  void
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +69,11 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
         vertical_recyclerview.setAdapter(pieceListAdapter);
     }
 
+    /*
+     *  init
+     *  initializes XML references and gets data from json files using Gson()
+     *  void
+     */
     private void init() {
         back_button = (ImageView) findViewById(R.id.back_button);
 
@@ -100,6 +111,13 @@ public class SectionActivity extends AppCompatActivity implements PieceListAdapt
         Log.d("HEADER FILE", piecePebbleArrayList.get(0).getBackground_image());
     }
 
+    /*
+     *  onItemClick
+     *  Attaches an onClickEvent to all items in RecyclerView
+     *  View view - reference to current view
+     *  int position - position of clicked item in the recylcerview list
+     *  void
+     */
     @Override
     public void onItemClick(View view, int position) {
         Intent PieceActivity = new Intent(getApplicationContext(), PieceActivity.class);

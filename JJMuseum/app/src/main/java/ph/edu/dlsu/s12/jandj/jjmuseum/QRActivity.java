@@ -37,6 +37,12 @@ public class QRActivity extends AppCompatActivity {
     private ArrayList<Piece> pieceArrayList;
     private boolean isValid;
 
+    /*
+     *  onCreate
+     *  function called on creation of the activity (as seen in Activity Lifecycle)
+     *  Bundle savedInstanceState - reference to the Bundle passed on to activity
+     *  void
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +54,11 @@ public class QRActivity extends AppCompatActivity {
         codeScanner();
     }
 
+    /*
+     *  init
+     *  initializes XML references and gets data from json files using Gson()
+     *  void
+     */
     private void init() {
 
         isValid = false;
@@ -62,6 +73,11 @@ public class QRActivity extends AppCompatActivity {
         pieceArrayList = gson.fromJson(piecesJSONString, pieceType);
     }
 
+    /*
+     *  codeScanner
+     *  Function called to scan QR code from Camera
+     *  void
+     */
     private void codeScanner() {
 
         recentScannedString = "";
@@ -120,6 +136,11 @@ public class QRActivity extends AppCompatActivity {
         });
     }
 
+    /*
+     *  onResume
+     *  Lifecycle function to start QR Scanning on resume of activity
+     *  void
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -127,6 +148,11 @@ public class QRActivity extends AppCompatActivity {
         qrScanner.startPreview();
     }
 
+    /*
+     *  onPause
+     *  Lifecycle function to stop and release resources for QR Scanning on pause of activity
+     *  void
+     */
     @Override
     protected void onPause() {
         super.onPause();
@@ -134,6 +160,11 @@ public class QRActivity extends AppCompatActivity {
         qrScanner.releaseResources();
     }
 
+    /*
+     *  setupPermissions
+     *  Checks if the app has valid permissions to use the camera for QR Code Scanning
+     *  void
+     */
     private void setupPermissions () {
         int permissions = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
 

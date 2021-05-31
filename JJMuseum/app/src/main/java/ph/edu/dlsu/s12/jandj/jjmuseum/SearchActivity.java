@@ -38,6 +38,12 @@ public class SearchActivity extends AppCompatActivity implements PieceListAdapte
 
     private String searchInput;
 
+    /*
+     *  onCreate
+     *  function called on creation of the activity (as seen in Activity Lifecycle)
+     *  Bundle savedInstanceState - reference to the Bundle passed on to activity
+     *  void
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +79,11 @@ public class SearchActivity extends AppCompatActivity implements PieceListAdapte
         vertical_recyclerview.setAdapter(pieceListAdapter);
     }
 
+    /*
+     *  init
+     *  initializes XML references and gets data from json files via Gson()
+     *  void
+     */
     private void init() {
         back_button = (ImageView) findViewById(R.id.back_button);
         search_button = (ImageView) findViewById(R.id.search_button);
@@ -95,11 +106,18 @@ public class SearchActivity extends AppCompatActivity implements PieceListAdapte
         piecePebbleArrayList = new ArrayList<>();
     }
 
+    /*
+     *  search
+     *  Lifecycle function to start QR Scanning on resume of activity
+     *  String searchInput - The text query string to base the search from
+     *  void
+     */
     private void search(String searchInput) {
 
         searchArrayList.removeAll(searchArrayList);
         piecePebbleArrayList.removeAll(piecePebbleArrayList);
 
+        // Checks if searchInput exists in the Name, Description, or Collection of the pieces
         for (Piece piece : pieceArrayList) {
             if(     piece.getName().toLowerCase().contains(searchInput.toLowerCase()) ||
                     piece.getDescription().toLowerCase().contains(searchInput.toLowerCase()) ||
@@ -110,8 +128,10 @@ public class SearchActivity extends AppCompatActivity implements PieceListAdapte
             }
         }
 
+        // Updates dataset to show to user the results of the search
         pieceListAdapter.notifyDataSetChanged();
 
+        // Displays a text if results were empty
         if(searchArrayList.isEmpty()) {
             no_results_tv.setVisibility(View.VISIBLE);
         } else {
@@ -119,6 +139,13 @@ public class SearchActivity extends AppCompatActivity implements PieceListAdapte
         }
     }
 
+    /*
+     *  onItemClick
+     *  Attaches an onClickEvent to all items in RecyclerView
+     *  View view - reference to current view
+     *  int position - position of clicked item in the recylcerview list
+     *  void
+     */
     @Override
     public void onItemClick(View view, int position) {
         Intent PieceActivity = new Intent(getApplicationContext(), PieceActivity.class);

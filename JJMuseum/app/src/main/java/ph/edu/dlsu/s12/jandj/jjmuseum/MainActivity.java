@@ -32,6 +32,13 @@ public class MainActivity extends AppCompatActivity implements SectionListAdapte
     private ArrayList<Pebble> sectionsArrayList;
     private ArrayList<Collection> collectionArrayList;
 
+
+    /*
+     *  onCreate
+     *  function called on creation of the activity (as seen in Activity Lifecycle)
+     *  Bundle savedInstanceState - reference to the Bundle passed on to activity
+     *  void
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +84,11 @@ public class MainActivity extends AppCompatActivity implements SectionListAdapte
         });
     }
 
+    /*
+     *  init
+     *  initializes XML references and gets data from json files using Gson()
+     *  void
+     */
     private void init() {
         horizontalScrollView = (RecyclerView) findViewById(R.id.horizontal_scrollview);
         search_button = (ImageView) findViewById(R.id.search_button);
@@ -89,12 +101,15 @@ public class MainActivity extends AppCompatActivity implements SectionListAdapte
         dividerItemDecoration.setDrawable(getDrawable(R.drawable.horizontal_spacing));
         horizontalScrollView.addItemDecoration(dividerItemDecoration);
 
+
+        // Gets collection data from json file
         String collectionJSONString = jsonParser.getJsonFromAssets(getApplicationContext(), "collectiondata.json");
         Log.d("JSON", collectionJSONString);
 
         Gson gson = new Gson();
         Type collectionType = new TypeToken<ArrayList<Collection>>(){}.getType();
 
+        // Assigns contents of json to collectionArrayList
         collectionArrayList = gson.fromJson(collectionJSONString, collectionType);
 
         Log.d("FIRST IN ARRAY", collectionArrayList.get(0).getCollection());
@@ -108,6 +123,13 @@ public class MainActivity extends AppCompatActivity implements SectionListAdapte
         Log.d("HEADER FILE", sectionsArrayList.get(0).getBackground_image());
     }
 
+    /*
+     *  onItemClick
+     *  Attaches an onClickEvent to all items in RecyclerView
+     *  View view - reference to current view
+     *  int position - position of clicked item in the recylcerview list
+     *  void
+     */
     @Override
     public void onItemClick(View view, int position) {
         Intent SectionActivity = new Intent(getApplicationContext(), SectionActivity.class);

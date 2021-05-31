@@ -55,6 +55,13 @@ public class PieceActivity extends AppCompatActivity {
 
     private ConstraintLayout.LayoutParams constraintLayout;
 
+
+    /*
+     *  onCreate
+     *  function called on creation of the activity (as seen in Activity Lifecycle)
+     *  Bundle savedInstanceState - reference to the Bundle passed on to activity
+     *  void
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -149,6 +156,11 @@ public class PieceActivity extends AppCompatActivity {
 
     }
 
+    /*
+     *  init
+     *  initializes XML references and connects to Firebase for comments
+     *  void
+     */
     private void init(){
         back_button = (ImageView) findViewById(R.id.back_button);
         btn_comment = (Button) findViewById(R.id.btn_comment);
