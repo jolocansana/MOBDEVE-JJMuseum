@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class AboutUsActivity extends AppCompatActivity {
 
     private ImageView back_button;
+    private TextView msgDirectorsTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,5 +30,8 @@ public class AboutUsActivity extends AppCompatActivity {
 
     private void init() {
         back_button = findViewById(R.id.back_button);
+        msgDirectorsTv = findViewById(R.id.msgDirectorsTv);
+
+        msgDirectorsTv.setText("The premier repository and custodian of the country’s heritage introduces its significant collections, and shares to a wider audience on-line its efforts to protect, conserve and promote the natural and cultural heritage of the Filipino people. We hope that through this website, we can stimulate your interest to visit us and appreciate in person the legacies that characterize and make up the Filipino identity.");
     }
 }
