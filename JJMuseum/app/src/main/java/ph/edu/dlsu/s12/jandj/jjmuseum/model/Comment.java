@@ -5,6 +5,15 @@ import java.io.Serializable;
 public class Comment implements Serializable {
     private String id, username, text;
 
+
+    /*
+     * Comment
+     * constructs the No-argument Comment object
+     */
+    public Comment() {
+
+    }
+
     /*
      * Comment
      * constructs the Comment object

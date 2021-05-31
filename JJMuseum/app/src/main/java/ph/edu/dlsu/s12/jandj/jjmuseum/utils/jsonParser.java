@@ -7,6 +7,13 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class jsonParser {
+    /*
+     * getJsonFromAssets
+     * coverts the data from the Json File to jsonString String
+     * Context context - context of the current activity
+     * String fileName - name of the file to parse
+     * String jsonString containing the data from the JsonFile
+     */
     public static String getJsonFromAssets(Context context, String fileName) {
         String jsonString;
         try {
