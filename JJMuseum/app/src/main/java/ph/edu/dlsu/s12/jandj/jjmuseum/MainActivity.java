@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements SectionListAdapte
 
     private ImageView search_button, qr_button;
     private RecyclerView horizontalScrollView;
-    private CardView cv_map_button;
+    private CardView cv_map_button, cv_about_button;
 
     private SectionListAdapter sectionListAdapter;
     private ArrayList<Pebble> sectionsArrayList;
@@ -67,14 +67,23 @@ public class MainActivity extends AppCompatActivity implements SectionListAdapte
                 startActivity(MapActivity);
             }
         });
+
+        cv_about_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent AboutUsActivity = new Intent(getApplicationContext(), AboutUsActivity.class);
+                startActivity(AboutUsActivity);
+            }
+        });
     }
 
     private void init() {
         horizontalScrollView = (RecyclerView) findViewById(R.id.horizontal_scrollview);
         search_button = (ImageView) findViewById(R.id.search_button);
         qr_button = (ImageView) findViewById(R.id.qr_button);
-        cv_map_button = (CardView) findViewById(R.id.cv_map_button);
 
+        cv_about_button = (CardView) findViewById(R.id.cv_about_button);
+        cv_map_button = (CardView) findViewById(R.id.cv_map_button);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(horizontalScrollView.getContext(), DividerItemDecoration.HORIZONTAL);
         dividerItemDecoration.setDrawable(getDrawable(R.drawable.horizontal_spacing));

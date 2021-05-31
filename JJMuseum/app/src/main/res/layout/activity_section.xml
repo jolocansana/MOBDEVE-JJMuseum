@@ -23,6 +23,12 @@
             android:src="@drawable/sample_piece" />
 
         <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:alpha=".3"/>
+
+        <ImageView
             android:id="@+id/back_button"
             android:layout_width="50dp"
             android:layout_height="50dp"

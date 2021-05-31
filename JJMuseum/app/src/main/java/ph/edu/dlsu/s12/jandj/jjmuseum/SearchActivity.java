@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -29,6 +30,7 @@ public class SearchActivity extends AppCompatActivity implements PieceListAdapte
     private ImageView back_button, search_button;
     private RecyclerView vertical_recyclerview;
     private EditText search_field_et;
+    private TextView no_results_tv;
 
     private ArrayList<Pebble> piecePebbleArrayList;
     private ArrayList<Piece> pieceArrayList, searchArrayList;
@@ -75,6 +77,7 @@ public class SearchActivity extends AppCompatActivity implements PieceListAdapte
         back_button = (ImageView) findViewById(R.id.back_button);
         search_button = (ImageView) findViewById(R.id.search_button);
         search_field_et = (EditText) findViewById(R.id.search_field_et);
+        no_results_tv = (TextView) findViewById(R.id.no_results_tv);
 
         vertical_recyclerview = (RecyclerView) findViewById(R.id.vertical_recyclerview);
 
@@ -108,6 +111,12 @@ public class SearchActivity extends AppCompatActivity implements PieceListAdapte
         }
 
         pieceListAdapter.notifyDataSetChanged();
+
+        if(searchArrayList.isEmpty()) {
+            no_results_tv.setVisibility(View.VISIBLE);
+        } else {
+            no_results_tv.setVisibility(View.GONE);
+        }
     }
 
     @Override

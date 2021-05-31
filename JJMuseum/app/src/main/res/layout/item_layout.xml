@@ -159,7 +159,8 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_weight="1"
-                android:background="@drawable/style_custom_button"/>
+                android:backgroundTint="@color/theme_orange"
+                />
 
         </LinearLayout>
 
